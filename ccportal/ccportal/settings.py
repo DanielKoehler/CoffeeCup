@@ -24,7 +24,7 @@ DEBUG = True
 
 TEMPLATE_DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['localhost', '178.62.46.211']
 
 
 # Application definition
@@ -40,13 +40,13 @@ INSTALLED_APPS = (
     # Coffee Cup Apps
                   
     'ccportal.portlets.dashboard',
-    'ccportal.equipmentmanager',
-    'ccportal.investorbulletin',
-    'ccportal.locationmanager',
-    'ccportal.mediasharing',
-    'ccportal.messenger',
-    'ccportal.scheduling',
-    'ccportal.useradministration',
+    'ccportal.portlets.equipmentmanager',
+    'ccportal.portlets.investorbulletin',
+    'ccportal.portlets.locationmanager',
+    'ccportal.portlets.mediasharing',
+    'ccportal.portlets.messenger',
+    'ccportal.portlets.scheduling',
+    'ccportal.portlets.useradministration',
                   
 )
 
