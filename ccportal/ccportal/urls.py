@@ -7,6 +7,13 @@ admin.autodiscover()
 urlpatterns = patterns('',
     # Examples:
     url(r'^$', 'ccportal.portlets.dashboard.views.index', name='index'),
-    url(r'^modeladmin/', include(admin.site.urls)),
+
+    url(r'^messenger/', include(ccportal.portlets.messenger.urls)),
+
+
+
+    # Admin
+    url(r'^modeladmin/', include(admin.site.)),
+
 
 )
