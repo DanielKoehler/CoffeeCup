@@ -19,7 +19,7 @@
     <div id="navbar" class="navbar-collapse collapse">
 
       <div class="navbar-user-info navbar-right">
-            <span class="user-fullname">Daniel Koehler</span>
+            <span class="user-fullname">Daniel K.</span>
             <span class="user-description">Web Admin</span> 
             <img class="user-image" src="{% static 'images/dan_avtr.png' %}" alt="Daniel Arno George Koehler">
             <button class="ion-ios-arrow-down user-options-button"></button>
@@ -98,10 +98,10 @@
 
       {% load menu %}{% generate_menu %}
 
-        {% for item in menus.main %} 
+        {% for item in menu %} 
 
           <p>{{item}}</p>
-          
+
         {% endfor %}
 
      </div>
