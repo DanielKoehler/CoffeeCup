@@ -94,7 +94,13 @@
         <h1>Dashboard</h1>
       </div>
 
-    
+      {{ menu }}
+
+      {% load menu %}{% generate_menu %}
+
+      {% for item in menus.user %} 
+        <p>{{item}}</p>
+      {% endfor %}
 
      </div>
 
