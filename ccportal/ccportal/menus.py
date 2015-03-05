@@ -14,20 +14,23 @@ Menu.add_item("main", MenuItem("Reports",
 
 # Define children for the my account menu
 myaccount_children = (
+
+    
     MenuItem("Edit Profile",
-             reverse("accounts.views.editprofile"),
+             # reverse("accounts.views.editprofile"),
              weight=10,
              icon="user"),
     MenuItem("Admin",
-             reverse("admin:index"),
+             # reverse("admin:index"),
              weight=80,
              separator=True,
              check=lambda request: request.user.is_superuser),
     MenuItem("Logout",
-             reverse("accounts.views.logout"),
+             # reverse("accounts.views.logout"),
              weight=90,
              separator=True,
              icon="user"),
+
 )
 
 # Add a My Account item to our user menu

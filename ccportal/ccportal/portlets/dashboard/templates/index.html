@@ -98,9 +98,9 @@
 
       {% load menu %}{% generate_menu %}
 
-      {% for item in menus.user %} 
-        <p>{{item}}</p>
-      {% endfor %}
+        {% for item in menus.main %} 
+          <p>{{item}}</p>
+        {% endfor %}
 
      </div>
 
