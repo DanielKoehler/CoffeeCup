@@ -37,6 +37,8 @@ INSTALLED_APPS = (
     'django.contrib.messages',
     'django.contrib.staticfiles',
 
+    'menu',
+
     # Coffee Cup Apps
                   
     'ccportal.portlets.dashboard',
