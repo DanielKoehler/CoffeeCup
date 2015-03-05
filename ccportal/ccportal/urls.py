@@ -13,7 +13,7 @@ urlpatterns = patterns('',
 
 
     # Admin
-    url(r'^modeladmin/', include(admin.site.)),
+    url(r'^modeladmin/', include(admin.site.urls)),
 
 
 )
