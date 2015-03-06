@@ -13,6 +13,7 @@ urlpatterns = patterns('',
 
     # Admin
     url(r'^modeladmin/', include(admin.site.urls)),
+    url(r'^messenger/', include(messenger.urls)),
 
 
 )
