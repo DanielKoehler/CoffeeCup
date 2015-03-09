@@ -2,7 +2,7 @@ from django.conf.urls import patterns, include, url
 
 from django.contrib import admin
 
-from ccportal.portlets import *
+from ccportal.portlets import messenger
 
 
 admin.autodiscover()
@@ -13,6 +13,9 @@ urlpatterns = patterns('',
 
     # Admin
     url(r'^modeladmin/', include(admin.site.urls)),
+
+
+
     url(r'^messenger/', include(messenger.urls)),
 
 

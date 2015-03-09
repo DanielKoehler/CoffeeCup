@@ -1,1 +1,0 @@
-'django-simple-menu' >= 1.0.9'
