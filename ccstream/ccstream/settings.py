@@ -47,9 +47,9 @@ MIDDLEWARE_CLASSES = (
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 )
 
-ROOT_URLCONF = 'ccportal.urls'
+ROOT_URLCONF = 'ccstream.urls'
 
-WSGI_APPLICATION = 'ccportal.wsgi.application'
+WSGI_APPLICATION = 'ccstream.wsgi.application'
 
 
 # Database
