@@ -1,1 +1,2 @@
-django-simple-menu>=1.0.9
+django-simple-menu==1.0.9
+django-apptemplates==0.0.1

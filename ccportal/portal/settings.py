@@ -36,20 +36,26 @@ INSTALLED_APPS = (
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-
     'menu',
-
     # Coffee Cup Apps
+
+    'portal',
                   
-    'ccportal.portlets.dashboard',
-    'ccportal.portlets.equipmentmanager',
-    'ccportal.portlets.investorbulletin',
-    'ccportal.portlets.locationmanager',
-    'ccportal.portlets.mediasharing',
-    'ccportal.portlets.messenger',
-    'ccportal.portlets.scheduling',
-    'ccportal.portlets.useradministration',
+    'portal.portlets.dashboard',
+    'portal.portlets.equipmentmanager',
+    'portal.portlets.investorbulletin',
+    'portal.portlets.locationmanager',
+    'portal.portlets.mediasharing',
+    'portal.portlets.messenger',
+    'portal.portlets.scheduling',
+    'portal.portlets.useradministration',
                   
+)
+
+TEMPLATE_LOADERS = (
+    'django.template.loaders.filesystem.Loader',
+    'django.template.loaders.app_directories.Loader',
+    'apptemplates.Loader',
 )
 
 MIDDLEWARE_CLASSES = (
@@ -61,9 +67,9 @@ MIDDLEWARE_CLASSES = (
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 )
 
-ROOT_URLCONF = 'ccportal.urls'
+ROOT_URLCONF = 'portal.urls'
 
-WSGI_APPLICATION = 'ccportal.wsgi.application'
+WSGI_APPLICATION = 'portal.wsgi.application'
 
 
 # Database

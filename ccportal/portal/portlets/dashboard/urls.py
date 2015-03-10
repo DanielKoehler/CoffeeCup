@@ -1,6 +1,6 @@
 from django.conf.urls import patterns, url
 
-from messenger import views
+import views
 
 urlpatterns = patterns('',
     # ex: /thread/
