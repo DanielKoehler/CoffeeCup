@@ -393,14 +393,29 @@ img.user-image {
 /* main content's heading */
 .applet-header{
   padding-left:35px;
-  padding-top: 48px;
+  padding-top: 46px;
   padding-bottom: 44px;
   border-bottom: 1px solid #E9E9E9;
+  padding-right: 30px;
 }
 
 .applet-header h4{
   margin: 0px;
   font-weight: bold;
+  display: inline;
+}
+
+.applet-header a{
+  float: right;
+}
+
+.header-icon-desc{
+  float:left;
+  font-size: 14px;
+  font-family: lato-light;
+  font-weight: normal;
+  margin-top: 3px;
+  margin-right:5px;
 }
 
 /* main content's body */
@@ -426,7 +441,7 @@ img.user-image {
 .thread-pane{
   height: 80px;
   position: relative;
-  padding: 0 40px;
+  padding: 0 9.75%;
 }
 
 .thread-pane:after {
@@ -470,7 +485,8 @@ img.user-image {
 
 /* messages */
 .messages{
-  max-width: 80%;
+  padding: 0px 9.75%;
+  min-height: 100px;
 }
 
 .message{
@@ -480,7 +496,7 @@ img.user-image {
 
 }
 .message-description p {
-  max-width: 410px;
+  max-width: 500px;
   font-size: 12px;
   font-family: lato-light;
 }
@@ -515,6 +531,90 @@ img.user-image {
   margin-right: 19px;
   vertical-align: top;
 }
+
+.applet-header a, a:visited, a:hover, a:active {
+  color: inherit;
+}
+
+.applet-icon{
+  font-size: 21px;
+  font-weight: bold;
+  margin: -5px 10px;
+  display: inline-block;
+  float: left;
+  padding: 3px 35px;
+  border-radius: 25px;
+  color: white;
+}
+
+.applet-icon-video{
+  border: 1px solid #EE5A5A;
+  background-color: #EE5A5A;
+}
+
+.applet-icon-phone{
+  border: 1px solid #4A90E2;
+  background-color: #4A90E2; 
+}
+
+/* bottom form for sending a message */
+.message-box{
+  border-top: 1px solid #E9E9E9;
+  border-left: 1px solid #E9E9E9;
+}
+
+.chat-input{
+  display: inline-block;
+  width:80.24%;
+}
+
+.chat-input{
+  margin-top: 31px;
+  margin-left: 33px;
+  margin-bottom: 28px;
+  border-radius: 3px;
+  width: 60%;
+  border: 1px solid #E9E9E9;
+  resize: none;
+  height:80px;
+  float: left;
+}
+
+.chat-input ::-webkit-input-placeholder {
+  font-family: lato;
+  padding: 11px 22px;
+}
+
+.chat-input :-moz-placeholder { /* older Firefox*/
+  font-family: lato;
+  padding: 11px 22px;
+}
+
+.chat-input ::-moz-placeholder { /* Firefox 19+ */ fo
+  font-family: lato;
+  padding: 11px 22px;
+}
+
+.chat-input :-ms-input-placeholder { 
+  font-family: lato;
+  padding: 11px 22px;
+}
+
+
+.button-blue{
+  background-color: #5AAFEE;
+  color: white;
+  border-radius: 3px;
+  border: 1px solid #5AAFEE;
+  padding: 10px 45px;
+}
+
+.chat-button{
+  margin-top: 51px;
+  margin-left: 18px;
+}
+
+
 /* end amazing css */
 
 
