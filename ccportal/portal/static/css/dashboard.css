@@ -463,13 +463,13 @@ img.user-image {
     position: absolute;
     height: 1px;
     width: 40%;
-    background: #E9E9E9;
+    background: #EEE;
     content: "";
-    bottom: -1px;
+    top: -1px;
     left: 30%;
 }
 
-.thread-pane:last-child:after {
+.thread-pane:first-child:after {
   display:none;
 } 
 
@@ -649,8 +649,19 @@ img.user-image {
 }
 
 .thread-pane.active {
-    background: #5AAFEE;
+  
+
+    background: #59ABE8;
     color: white;
+}
+
+.thread-pane.active:hover {
+  background:#5AAFEE;
+}
+
+
+.thread-pane:hover {
+  background:#EEE;
 }
 
 .thread-pane.active .thread-snippet-time {
@@ -659,9 +670,9 @@ img.user-image {
 
 }
 
-.thread-pane.active:after {
-    display: none;
-
+.thread-pane.active:after, 
+.thread-pane:hover:after {
+    display: none;   
 }
 
 /* end amazing css */
