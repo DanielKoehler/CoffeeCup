@@ -429,9 +429,12 @@ img.user-image {
 /* common to thread list & messages */
 .description{
   display: inline-block;
-  margin:15px 0px;
-  height: 40px;
-  /*position: absolute;*/
+  line-height: 9px;
+  margin:  0px;
+  height: 57px;
+  width: calc(100% - 70px);
+  position: relative;
+  vertical-align: middle;
 }
 
 .description h5{
@@ -446,6 +449,7 @@ img.user-image {
   height: 80px;
   position: relative;
   padding: 0 9.75%;
+  line-height: 80px;
 }
 
 .thread-pane:after {
@@ -467,6 +471,7 @@ img.user-image {
   font-family: lato-light;
   padding-bottom: 9px;
   margin-bottom: 0px;
+  display: inline;
 }
 
 .thread-description{
@@ -483,7 +488,7 @@ img.user-image {
 }
 
 .thread-snippet-time{
-  display: inline-block;
+  display: inline;
   font-family: lato-light;
   font-style: italic;
   margin-bottom: 0px;
@@ -535,9 +540,10 @@ img.user-image {
   -webkit-border-radius: 20px;
   -moz-border-radius: 20px;
   display: inline-block;
-  margin-top: 23px;
+  margin-top: 0px;
   margin-right: 19px;
-  vertical-align: top;
+  vertical-align: middle;
+  border: 2px solid #FFFFFF;
 }
 
 .applet-header a, a:visited, a:hover, a:active {
