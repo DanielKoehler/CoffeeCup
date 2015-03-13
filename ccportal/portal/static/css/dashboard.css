@@ -455,9 +455,13 @@ img.user-image {
     width: 40%;
     background: #E9E9E9;
     content: "";
-    bottom: 1px;
+    bottom: -5px;
     left: 30%;
 }
+
+.thread-pane:last-child:after {
+  display:none;
+} 
 
 .thread-snippet{
   font-family: lato-light;
@@ -583,6 +587,7 @@ img.user-image {
   resize: none;
   height:80px;
   float: left;
+  padding: 10px;
 }
 
 .chat-input ::-webkit-input-placeholder {
