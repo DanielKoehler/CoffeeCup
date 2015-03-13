@@ -567,14 +567,21 @@ img.user-image {
   color: white;
 }
 
-.applet-icon-video{
+.applet-icon.icon-red{
   border: 1px solid #EE5A5A;
   background-color: #EE5A5A;
+  background: #EE5A5A; 
+  box-shadow: inset 0px 1px 0px 0px rgba(0,0,0,0.10); 
+  border-radius: 40px; 
+
 }
 
-.applet-icon-phone{
+.applet-icon.icon-blue{
   border: 1px solid #4A90E2;
   background-color: #4A90E2; 
+  background: #4A90E2;
+  box-shadow: inset 0px 1px 0px 0px rgba(0,0,0,0.10);
+  border-radius: 40px;
 }
 
 /* bottom form for sending a message */
