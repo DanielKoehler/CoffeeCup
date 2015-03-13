@@ -316,6 +316,8 @@ img.user-image {
   margin-left: 20%;
   width: 80%;
   overflow-x: hidden; 
+  display: table-row;
+  position: Relative;
 }
 @media (min-width: 768px) {
   .main {
@@ -359,7 +361,7 @@ img.user-image {
   box-sizing: border-box;
    
   border-right: 1px solid #E9E9E9;
-  float: left;
+  /* float: left; */
 }
 
 .rule-seperated {
@@ -375,10 +377,13 @@ img.user-image {
 /* column used for main content */
 .applet-col {
   box-sizing: border-box;
-  display: block;
-  float: left;
+  display: table;
+  display: table-cell;
+  /* float: left; */
   border-right: 1px solid #E9E9E9;
-  float: left;
+  /* float: left; */
+  min-height: 100%;
+  height: 151%;
 }
 
 /* left and right columns for threads/messages */

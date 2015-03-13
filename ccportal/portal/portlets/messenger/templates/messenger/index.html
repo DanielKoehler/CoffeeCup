@@ -7,75 +7,76 @@
 <div class="content-span-header">
   <h1>Messenger</h1>
 </div>
-<!-- list of threads/conversations-->
-<div class="applet-col applet-col-2">
-  <div class="applet-header">
-    <h4>
-      Threads 
-      <a href=""><span class="header-icon-desc">new</span><span class="sidebar-icon ion-ios-plus-outline"></span></a>
-    </h4>
-  </div>
-
-  <div class="applet-body">
-    <!-- thread -->
-    <div class="thread-pane">
-      <img src="{% static 'images/rob_avtr.png' %}" class="circular-img">
-      <div class="description">
-        <h5>Chris Smale</h5>
-        <p class="thread-snippet-time">25 minutes ago.</p>
-        <p class="thread-snippet">Lorem ipsum dolor sit amet</p>
-      </div>
+<div class="applet-row">
+  <!-- list of threads/conversations-->
+  <div class="applet-col applet-col-2">
+    <div class="applet-header">
+      <h4>
+        Threads 
+        <a href=""><span class="header-icon-desc">new</span><span class="sidebar-icon ion-ios-plus-outline"></span></a>
+      </h4>
     </div>
-    <!-- thread 2 etc... -->
-  </div>
-</div>
-<!-- chat window -->
-<div class="applet-col applet-col-4">
-  <div class="applet-header">
-    <h4>
-      Rob Johnson
-        <a href="">
-          <span class="applet-icon applet-icon-video ion-ios-videocam-outline"></span>
-        </a>
-        <a href="">
-          <span class="applet-icon applet-icon-phone ion-ios-telephone-outline"></span>
-        </a>
-    </h4>
-  </div>
-  <div class="applet-body">
-    <div class="messages">
-      <!-- time stamp -->
-      <div class="time-stamp">
-        <div class="line"></div>
-        <p>1 hour ago</p>
-        <div class="line"></div>
-      </div>
-      <!-- message -->
-      <div class="message">
+
+    <div class="applet-body">
+      <!-- thread -->
+      <div class="thread-pane">
         <img src="{% static 'images/rob_avtr.png' %}" class="circular-img">
-        <div class="description message-description">
+        <div class="description">
           <h5>Chris Smale</h5>
-          <p>Orci ipsum egestas :)</p>
+          <p class="thread-snippet-time">25 minutes ago.</p>
+          <p class="thread-snippet">Lorem ipsum dolor sit amet</p>
         </div>
       </div>
-      <!-- message -->
-      <div class="message">
-        <img src="{% static 'images/chris_avtr.png' %}" class="circular-img">
-        <div class="description message-description">
-          <h5>Chris Smale</h5>
-          <p>Malesuada quis montes. Egestas dignissim eu. Faucibus morbi quis. Quam et nulla pretium luctus nulla vestibulum vestibulum ut. Orci ipsum egestas. Quis id dui. Lorem vel non diam netus massa et sociis mi fugiat commodo orci est aut mattis. Aliquam libero enim proin integer diam sit purus sed. Wisi risus donec eleifend quisque sed. Maecenas penatibus phasellus. Et elit enim sed iaculis ut eget scelerisque mi. Integer imperdiet arcu.  </p>
+      <!-- thread 2 etc... -->
+    </div>
+  </div>
+  <!-- chat window -->
+  <div class="applet-col applet-col-4">
+    <div class="applet-header">
+      <h4>
+        Rob Johnson
+          <a href="">
+            <span class="applet-icon applet-icon-video ion-ios-videocam-outline"></span>
+          </a>
+          <a href="">
+            <span class="applet-icon applet-icon-phone ion-ios-telephone-outline"></span>
+          </a>
+      </h4>
+    </div>
+    <div class="applet-body">
+      <div class="messages">
+        <!-- time stamp -->
+        <div class="time-stamp">
+          <div class="line"></div>
+          <p>1 hour ago</p>
+          <div class="line"></div>
+        </div>
+        <!-- message -->
+        <div class="message">
+          <img src="{% static 'images/rob_avtr.png' %}" class="circular-img">
+          <div class="description message-description">
+            <h5>Chris Smale</h5>
+            <p>Orci ipsum egestas :)</p>
+          </div>
+        </div>
+        <!-- message -->
+        <div class="message">
+          <img src="{% static 'images/chris_avtr.png' %}" class="circular-img">
+          <div class="description message-description">
+            <h5>Chris Smale</h5>
+            <p>Malesuada quis montes. Egestas dignissim eu. Faucibus morbi quis. Quam et nulla pretium luctus nulla vestibulum vestibulum ut. Orci ipsum egestas. Quis id dui. Lorem vel non diam netus massa et sociis mi fugiat commodo orci est aut mattis. Aliquam libero enim proin integer diam sit purus sed. Wisi risus donec eleifend quisque sed. Maecenas penatibus phasellus. Et elit enim sed iaculis ut eget scelerisque mi. Integer imperdiet arcu.  </p>
+          </div>
         </div>
       </div>
+      <!--  enter message -->
+      <div class="message-box">
+        <form>
+            <textarea class="chat-input" placeholder="Write your message..."></textarea>
+            <button class="button-blue chat-button">Send</button>
+        </form>
+      </div>
+      
     </div>
-    <!--  enter message -->
-    <div class="message-box">
-      <form>
-          <textarea class="chat-input" placeholder="Write your message..."></textarea>
-          <button class="button-blue chat-button">Send</button>
-      </form>
-    </div>
-    
   </div>
 </div>
-
 {% endblock %}
