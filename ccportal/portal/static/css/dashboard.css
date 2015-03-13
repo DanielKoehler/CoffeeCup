@@ -362,6 +362,7 @@ img.user-image {
   font-family: Lato-Bold;
   font-size: 36px;
   color: #484848;
+  white-space: nowrap;
 }
 
 .applet-col h1 {
@@ -653,6 +654,7 @@ img.user-image {
 
     background: #59ABE8;
     color: white;
+    z-index: 1;
 }
 
 .thread-pane.active:hover {
@@ -687,4 +689,13 @@ img.user-image {
 
 .applet-col.col-stretch {
     height: 608px;
+}
+
+.thread-snippet-time.right {
+    text-align: right;
+    display: block;
+    position: absolute;
+    top: 15px;
+    width: 100%;
+    font-weight: 200;
 }
