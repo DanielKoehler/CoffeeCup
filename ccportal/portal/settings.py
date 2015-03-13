@@ -30,6 +30,7 @@ ALLOWED_HOSTS = ['localhost', '178.62.46.211']
 # Application definition
 
 INSTALLED_APPS = (
+    
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -40,6 +41,7 @@ INSTALLED_APPS = (
     # Coffee Cup Apps
 
     'portal',
+    'portal.site',
                   
     'portal.portlets.dashboard',
     'portal.portlets.equipmentmanager',

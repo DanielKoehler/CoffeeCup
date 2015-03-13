@@ -699,3 +699,95 @@ img.user-image {
     width: 100%;
     font-weight: 200;
 }
+
+.applet-column-group h4 {
+    font-family: Lato-Bold; 
+    font-size: 18px; 
+    color: #484848; 
+    line-height: 22px;
+    padding: 10px 32px;
+}
+
+.login-form input, .login-form button {
+  border: 1px solid #E9E9E9;
+  border-radius: 4px;
+  font-family: Lato-Regular;
+  font-size: 19.76px;
+  color: #2B2B2B;
+  line-height: 24px;
+  width: 357px;
+  height: 58px;
+  margin: 27px auto;
+  display: block;
+  text-indent: 20px;
+}
+
+.login-wrap {
+    width: 413px;
+    height: 499px;
+    border: 1px solid #E9E9E9;
+    border-radius: 4px;
+    margin: 100px auto;
+    overflow: hidden;
+}
+
+.login-header {
+    background: #F9F9F9;
+    height: 80px;
+    border-bottom: 1px solid #E9E9E9;
+    display: inline-block;
+    width: 100%;
+}
+
+.login-header h2 {
+    font-size: 19px;
+    font-family: lato-bold;
+    text-align: center;
+    text-transform: uppercase;
+    line-height: 80px;
+    color: #6E6E6E;
+    margin: 0;
+}
+
+.login-footer {
+    background: #3C5A9D;
+    border-top: 2px solid #20335E;
+    height: 85px;
+    line-height: 77px;
+}
+
+.login-form button {
+    background: #5AAFEE; 
+    border-color: #5AAFEE;
+    color: white;
+    border-radius: 4px;
+}
+
+input:focus {
+  outline:none;
+}
+
+.login-form p {
+    font-size: 17px;
+    text-align: center;
+}
+
+.login-form a {
+  color:#5AAFEE;
+}
+
+.login-footer p {
+    font-size: 17px;
+    text-align: center;
+    display: inline-block;
+    color: #FFF;
+    margin: 0;
+}
+
+img.login-icon {
+    margin: 0px 26px;
+}
+
+span.text-bold {
+  font-family: 'lato-bold';
+}

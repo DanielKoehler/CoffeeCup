@@ -9,6 +9,11 @@ admin.autodiscover()
 
 urlpatterns = patterns('',
 
+	# Login 
+
+	url(r'^login/$', 'portal.site.views.login'),
+
+	# Index
     url(r'^$', 'portal.portlets.dashboard.views.index', name='index'),
 
     url(r'^dashboard/', include('portal.portlets.dashboard.urls')),
