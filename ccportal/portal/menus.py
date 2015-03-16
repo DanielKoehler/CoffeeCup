@@ -1,16 +1,6 @@
 from menu import Menu, MenuItem
 
 # Add two items to our main menu
-Menu.add_item("main", MenuItem("Tools",
-                               'link',
-                               weight=10,
-                               icon="tools"))
-
-Menu.add_item("main", MenuItem("Meh",
-                               'link',
-                               weight=10,
-                               icon="tools"))
-
 
 # Define children for the my account menu
 # myaccount_children = (

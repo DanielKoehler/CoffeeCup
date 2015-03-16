@@ -1,6 +1,9 @@
 from django.shortcuts import render_to_response
+from django.shortcuts import render
 
-# Create your views here.
+from django.template import RequestContext
+
+# Create your views here. 
 
 def index(request):
-    return render_to_response('messenger/index.html', {'title': 'Messenger'})
+    return render(request, 'messenger/index.html', {'title': "Messenger"})

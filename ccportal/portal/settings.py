@@ -37,6 +37,7 @@ INSTALLED_APPS = (
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+
     'menu',
     # Coffee Cup Apps
 
@@ -58,6 +59,17 @@ TEMPLATE_LOADERS = (
     'django.template.loaders.filesystem.Loader',
     'django.template.loaders.app_directories.Loader',
     'apptemplates.Loader',
+)
+
+TEMPLATE_CONTEXT_PROCESSORS = (
+    "django.contrib.auth.context_processors.auth",
+    "django.core.context_processors.debug",
+    "django.core.context_processors.i18n",
+    "django.core.context_processors.media",
+    "django.core.context_processors.static",
+    "django.core.context_processors.tz",
+    "django.contrib.messages.context_processors.messages",
+    "django.core.context_processors.request",
 )
 
 MIDDLEWARE_CLASSES = (
@@ -100,6 +112,8 @@ USE_I18N = True
 USE_L10N = True
 
 USE_TZ = True
+
+MENU_SELECT_PARENTS = True
 
 
 # Static files (CSS, JavaScript, Images)

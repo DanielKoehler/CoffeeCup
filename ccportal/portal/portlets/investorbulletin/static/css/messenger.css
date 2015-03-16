@@ -1,0 +1,132 @@
+/* column used for main content */
+.applet-col {
+  box-sizing: border-box;
+  display: block;
+  float: left;
+  border-right: 1px solid #E9E9E9;
+  float: left;
+}
+
+/* left and right columns for threads/messages */
+.applet-col-2 {
+    width: 30%;
+}
+
+.applet-col-4 {
+    width: 70%; 
+}
+
+/* main content's heading */
+.applet-header{
+  padding-left:35px;
+  padding-top: 44px;
+  padding-bottom: 39px;
+  border-bottom: 1px solid #E9E9E9;
+}
+
+.applet-header h4{
+  margin: 0px;
+  font-weight: bold;
+}
+
+/* main content's body */
+.applet-body{
+  padding-left:11.42%;
+}
+
+/* common to thread list & messages */
+.description{
+  display: inline-block;
+  margin:15px 0px;
+  height: 40px;
+  /*position: absolute;*/
+}
+
+.description h5{
+  font-weight: bold; 
+  margin-top: 12px;
+  margin-bottom: 5px;
+  display: inline-block;
+}
+
+/* Thread list */
+.thread-pane{
+  height: 80px;
+}
+
+.thread-snippet{
+  font-family: lato-light;
+  padding-bottom: 9px;
+  margin-bottom: 0px;
+  border-bottom: 1px solid #E9E9E9;
+}
+
+.thread-description{
+  display: inline-block;
+  margin:15px 0px;
+  height: 40px;
+}
+
+.thread-description h5{
+  font-weight: bold; 
+  margin-top: 12px;
+  margin-bottom: 5px;
+  display: inline-block;
+}
+
+.thread-snippet-time{
+  display: inline-block;
+  font-family: lato-light;
+  font-style: italic;
+  margin-bottom: 0px;
+  margin-left: 19px;
+
+}
+
+/* messages */
+.messages{
+  max-width: 80%;
+}
+
+.message{
+  margin-bottom: 24px;
+}
+.message-description h5{
+
+}
+.message-description p {
+  max-width: 410px;
+  font-size: 12px;
+  font-family: lato-light;
+}
+
+.time-stamp{
+  margin-top: 15px;
+  margin-bottom: 15px;
+}
+
+.time-stamp p{
+  font-family: lato-light;
+  font-style: italic;
+  display: inline-block;
+  margin-bottom: 0px;
+}
+
+.line{
+  border-top: 1px solid #E9E9E9;
+  width: 40%;
+  display: inline-block;
+}
+
+
+/* profile image */
+.circular-img{
+  width: 40px;
+  height: 40px;
+  -webkit-border-radius: 20px;
+  -moz-border-radius: 20px;
+  display: inline-block;
+  margin-top: 23px;
+  margin-right: 19px;
+  vertical-align: top;
+}

@@ -47,63 +47,39 @@
 
       {% load menu %}{% generate_menu %}
 
-      {% for item in menu %} 
 
-          <li class="active">
-            <a href="">
-              <span class="sidebar-icon ion-ios-speedometer-outline"></span>
-              <span class="sidebar-menu-title">{{item}}</span>
+      {% for item in menus.sidebar %} 
+
+          <li  class="{% if item.selected %} active{% endif %}">
+            <a href="{{ item.url }}">
+              <span class="sidebar-icon ion-{{ item.icon }}"></span>
+              <span class="sidebar-menu-title">{{ item.title }}</span>
             </a>
-          </li>
+          
+
+          {% if item.selected and item.children %} 
+
+            <ul class="submenu">
+
+            {% for child in item.children %} 
+
+              <li  class="{% if child.selected %} active{% endif %}">
+                <a href="{{ child.url }}">
+                  <span class="sidebar-icon ion-{{ child.icon }}"></span>
+                  <span class="sidebar-menu-title">{{ child.title }}</span>
+                </a>
+              </li>
+
+            {% endfor %}
+
+            </ul>
+
+          {% endif %}
+
+        </li>
 
       {% endfor %}
-
-      <li class="">
-      <!-- <li class="active"> -->
-        <a href="/dashboard/">
-          <span class="sidebar-icon ion-ios-speedometer-outline"></span>
-          <span class="sidebar-menu-title">Dashboard</span>
-        </a>
-      </li>
-      <li>
-        <a href="">
-          <span class="sidebar-icon ion-ios-albums-outline"></span>
-          <span class="sidebar-menu-title">Media Sharing</span>
-        </a>
-      </li>
-      <li>
-        <a href="">
-          <span class="sidebar-icon ion-ios-calendar-outline"></span>
-          <span class="sidebar-menu-title">Scheduling System</span>
-        </a>
-      </li>
-      <li>
-        <a href="/messenger/">
-          <span class="sidebar-icon ion-ios-chatbubble-outline"></span>
-          <span class="sidebar-menu-title">Crew Messenger</span>
-          <span class="notification-badge">3</span>
-        </a>
-      </li>
-      <li>
-        <a href="/locationmanager/">
-          <span class="sidebar-icon ion-ios-navigate-outline"></span>
-          <span class="sidebar-menu-title">Location Manager</span>
-        </a>
-      </li>
-      <li>
-        <a href="/equipmentmanager/">
-          <span class="sidebar-icon ion-ios-videocam-outline"></span>
-          <span class="sidebar-menu-title">Equipment Manager</span>
-        </a>
-      </li>
-      <li>
-        <a href="">
-          <span class="sidebar-icon ion-ios-people-outline"></span>
-          <span class="sidebar-menu-title">User Administration</span>
-          </a>
-      </li>
-
-
+      
     </ul>
   </div> <!-- end sidebar -->
 

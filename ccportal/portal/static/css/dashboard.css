@@ -220,7 +220,38 @@ button:focus {
   border-bottom: 1px solid #E9E9E9;
 }
 
+.nav-sidebar > li > ul.submenu > li {
+    height: 40px;
+    line-height: 40px;
+    width: 100%;
+    list-style: none;
+    background: rgba(118, 176, 220, 0.5);
+    display: block;
+    padding-left: 38px;
+    font-size: 12px;
+    
+}
 
+.nav-sidebar > li > ul.submenu > li > a {
+  color: #FFF;
+}
+
+.nav-sidebar > li > ul.submenu > li.active {
+  background: #5AAFEE;
+}
+
+.nav-sidebar > li > ul.submenu .sidebar-icon {
+    padding: 0;
+    margin: 0;
+    font-size: 17px;
+}
+
+.nav-sidebar > li > ul.submenu {
+    width: 100%;
+    background: #FFF;
+    padding: 0px;
+    display: table;
+}
 
 .nav-sidebar > li > a {
   padding-right: 20px;
@@ -446,8 +477,8 @@ img.user-image {
 
 .description h5{
   font-weight: bold; 
-  margin-top: 12px;
-  margin-bottom: 5px;
+  margin-top: 11px;
+  margin-bottom: 7px;
   display: inline-block;
 }
 
@@ -456,7 +487,7 @@ img.user-image {
   height: 80px;
   position: relative;
   padding: 0 9.75%;
-  line-height: 80px;
+  line-height: 77px;
 }
 
 .thread-pane:after {
@@ -542,10 +573,10 @@ img.user-image {
 
 /* profile image */
 .circular-img{
-  width: 40px;
-  height: 40px;
-  -webkit-border-radius: 20px;
-  -moz-border-radius: 20px;
+  width: 42px;
+  height: 42px;
+  -webkit-border-radius: 100%;
+  -moz-border-radius: 100%;
   display: inline-block;
   margin-top: 0px;
   margin-right: 19px;
