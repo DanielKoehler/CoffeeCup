@@ -82,8 +82,9 @@ button:focus {
 }
 
 .navbar-brand {
-  font-family: Lato-Hairline;
+  font-family: Lato;
   font-size: 36px;
+  font-weight: 100;
   color: #484848;
   line-height: 44px;
 }
@@ -95,7 +96,8 @@ button:focus {
 }
 
 .navbar-brand .brand-bold {
-  font-family: Lato-Bold;
+  font-family: Lato;
+  font-weight: 600;
 }
 
 .navbar-brand {
@@ -337,7 +339,8 @@ img.user-image {
 
 .user-fullname {
     display: inline-block;
-    font-family: Lato-Bold;
+    font-family: Lato;
+    font-weight: 600;
     font-size: 14px;
     width: 100%;
     text-align: right;
@@ -345,7 +348,7 @@ img.user-image {
 
 .user-description {
     display: inline-block;  
-    font-family: Lato-Regular; 
+    font-family: Lato; 
     font-size: 10px;
     width: 100%;
     text-align: right;
@@ -392,7 +395,7 @@ img.user-image {
   line-height: 119px;
   margin: 0;
   margin-left: 75px;
-  font-family: Lato-Bold;
+  font-family: Lato;   font-weight: 600;
   font-size: 36px;
   color: #484848;
   white-space: nowrap;
@@ -458,8 +461,8 @@ img.user-image {
 .header-icon-desc{
   float:left;
   font-size: 14px;
-  font-family: lato-light;
-  font-weight: normal;
+  font-family: Lato;
+  font-weight: 300;
   margin-top: 3px;
   margin-right:5px;
 }
@@ -512,7 +515,8 @@ img.user-image {
 } 
 
 .thread-snippet{
-  font-family: lato-light;
+  font-family: Lato;
+  font-weight: 300;
   padding-bottom: 9px;
   margin-bottom: 0px;
   display: inline-block;
@@ -534,7 +538,8 @@ img.user-image {
 
 .thread-snippet-time{
   display: inline;
-  font-family: lato-light;
+  font-family: Lato;
+  font-weight: 400;
   font-style: italic;
   margin-bottom: 0px;
 
@@ -555,7 +560,8 @@ img.user-image {
 .message-description p {
   max-width: 500px;
   font-size: 12px;
-  font-family: lato-light;
+  font-family: Lato;   
+  font-weight: 400;
 }
 
 .time-stamp{
@@ -564,7 +570,7 @@ img.user-image {
 }
 
 .time-stamp p{
-  font-family: lato-light;
+  font-family: Lato;
   font-style: italic;
   display: inline-block;
   margin-bottom: 0px;
@@ -726,11 +732,11 @@ img.user-image {
     position: absolute;
     top: 15px;
     width: 100%;
-    font-weight: 200;
 }
 
 .applet-column-group h4 {
-    font-family: Lato-Bold; 
+    font-family: Lato; 
+    font-weight: 600;
     font-size: 18px; 
     color: #484848; 
     line-height: 22px;
@@ -825,7 +831,8 @@ img.login-icon {
 }
 
 .text-bold {
-  font-family: 'lato-bold';
+  font-family: Lato;
+  font-weight: 600;
 }
 
 .text-small {
