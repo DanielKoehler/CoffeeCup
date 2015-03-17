@@ -506,7 +506,10 @@ img.user-image {
 /* messages */
 .messages{
   padding: 0px 9.75%;
-  min-height: 100px;
+  min-height: 300px;
+  max-height: 300px;
+  display: block;
+  overflow: scroll;
 }
 
 .message{
@@ -698,4 +701,10 @@ img.user-image {
     top: 15px;
     width: 100%;
     font-weight: 200;
+}
+
+
+#status{
+  margin-left: 45%;
+  margin-bottom: 0px;
 }

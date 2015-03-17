@@ -1,13 +1,15 @@
 {% extends "portal:portlet.html" %}
-
 {% load static from staticfiles %}
 
-{% block content_main %}
+{% block head %}
+  
+{% endblock %}
 
+{% block content_main %}
 <div class="content-span-header">
   <h1>Messenger</h1>
 </div>
-<div class="applet-row">
+<div class="applet-row" ng-app="chatApp">
   <!-- list of threads/conversations-->
   <div class="applet-col applet-col-2">
     <div class="applet-header">
@@ -56,39 +58,93 @@
       </h4>
     </div>
     <div class="applet-body">
-      <div class="messages">
+      <div id="messages" class="messages">
         <!-- time stamp -->
         <div class="time-stamp">
           <div class="line"></div>
           <p>1 hour ago</p>
           <div class="line"></div>
         </div>
-        <!-- message -->
-        <div class="message">
-          <img src="{% static 'images/rob_avtr.png' %}" class="circular-img">
-          <div class="description message-description">
-            <h5>Chris Smale</h5>
-            <p>Orci ipsum egestas :)</p>
-          </div>
-        </div>
-        <!-- message -->
-        <div class="message">
-          <img src="{% static 'images/chris_avtr.png' %}" class="circular-img">
-          <div class="description message-description">
-            <h5>Chris Smale</h5>
-            <p>Malesuada quis montes. Egestas dignissim eu. Faucibus morbi quis. Quam et nulla pretium luctus nulla vestibulum vestibulum ut. Orci ipsum egestas. Quis id dui. Lorem vel non diam netus massa et sociis mi fugiat commodo orci est aut mattis. Aliquam libero enim proin integer diam sit purus sed. Wisi risus donec eleifend quisque sed. Maecenas penatibus phasellus. Et elit enim sed iaculis ut eget scelerisque mi. Integer imperdiet arcu.  </p>
-          </div>
-        </div>
+      </div>
+      <div>
+        <p id="status"></p>
       </div>
       <!--  enter message -->
-      <div class="message-box">
+      <div class="message-box" ng-controller="chatCtrl">
         <form>
-            <textarea class="chat-input" placeholder="Write your message..."></textarea>
-            <button class="button-blue chat-button">Send</button>
+            <textarea id="m" class="chat-input" placeholder="Write your message..." ng-model="message"></textarea>
+            <button type="submit" class="button-blue chat-button">Send</button>
         </form>
       </div>
-      
     </div>
   </div>
+<!---
+<div class="message">
+  <img src="{% static 'images/rob_avtr.png' %}" class="circular-img">
+  <div class="description message-description">
+    <h5>Chris Smale</h5>
+    <p>Orci ipsum egestas :)</p>
+  </div>
 </div>
+-->
+
+</div>
+  <script src="http://code.jquery.com/jquery-1.11.1.js"></script>
+  <script src="https://cdn.socket.io/socket.io-1.3.4.js"></script>
+  <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.14/angular.min.js"></script>
+  <script type="text/javascript" src="{% static 'js/angular-socket.js' %}"></script>  
+  <script type="text/javascript" src="{% static 'js/app.js' %}"></script>
+  
+  <script>
+    var socket = io(':3000/');
+    var stopTyping;
+
+    // <--------- EMITTED EVENTS ---------> //
+
+    // send message 
+    $('form').submit(function(){
+      var message = $('#m').val();
+      socket.emit('message', message);
+      $('#messages').append($('<div class="message"><img src="{% static "images/rob_avtr.png" %}" class="circular-img"><div class="description message-description"><h5>Chris Smale</h5><p>' + message + '</p></div></div>'));
+      $('#m').val('');
+      return false;
+    });
+
+    // <--------- RECEIVED EVENTS --------> //
+
+    // message received...
+    socket.on('message', function(msg){
+      $('#messages').append($('<div class="message"><img src="{% static "images/rob_avtr.png" %}" class="circular-img"><div class="description message-description"><h5>Chris Smale</h5><p>' + msg + '</p></div></div>'));
+    });
+  
+    // user is typing...
+    socket.on('typing', function(user){
+      if(user.status == 1){
+        console.log(user.id + " is typing");
+        $('#status').append().text(user.id + " is typing...");
+      }
+      else{
+        console.log(user.id + " is not typing");
+        $('#status').append().text("");
+      }
+
+    });
+
+    // <--------- HELPER EVENTS ----------> //
+
+    // User is typing
+    $('#m').keypress(function(){
+      clearTimeout(stopTyping);
+      socket.emit('typing', 1);
+    });
+
+    // user has stopped typing
+    $('#m').keyup(function(){
+      stopTyping = setTimeout(function(){
+        socket.emit('typing', 0);
+      }, 500);
+    });
+
+  </script>
 {% endblock %}
+
