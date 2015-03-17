@@ -5,61 +5,42 @@
 {% block content_main %}
 
 <div class="content-span-header">
-  <h1>Location Manager</h1>
+  <h1>Media Sharing</h1>
 </div>
 <div class="applet-row">
   <!-- list of threads/conversations-->
-  <div class="applet-col applet-col-2">
-    <div class="applet-header">
-      <h4>
-        Locations 
-        <a href=""><span class="header-icon-desc">new</span><span class="sidebar-icon ion-ios-plus-outline"></span></a>
-      </h4>
-    </div>
+  <div class="applet-col applet-col-6">
 
     <div class="applet-body">
       <!-- thread -->
-      <div class="thread-pane">
-        <img src="{% static 'images/taf.png' %}" class="circular-img">
-        <div class="description">
-          <h5>Taf River</h5>
-          <p class="thread-snippet-time"> - Cardiff</p>
-          <p class="thread-snippet">Lorem ipsum dolor sit amet</p>
-        </div>
-      </div>
-      <div class="thread-pane">
-        <img src="{% static 'images/rhine.png' %}" class="circular-img">
-        <div class="description">
-          <h5>Rhine Falls</h5>
-          <p class="thread-snippet-time"> - Zurich</p>
-          <p class="thread-snippet">Lorem ipsum dolor sit amet</p>
-        </div>
-      </div>
-      <div class="thread-pane active">
-        <img src="{% static 'images/gotthard.png' %}" class="circular-img">
-        <div class="description">
-          <h5>Gotthard Pass</h5>
-          <p class="thread-snippet-time"> - Swiss Alps</p>
-          <p class="thread-snippet">Lorem ipsum dolor sit amet</p>
-        </div>
-      </div>
-      <!-- thread 2 etc... -->
-    </div>
-  </div>
-  <!-- chat window -->
-  <div class="applet-col applet-col-4">
-    <div class="applet-header">
-      
-      <h4>
-        Gotthard Pass
-      </h4>
+
+    <form>
+
+      <table class="applet-table">
+         <thead class="indented">
+          <tr>
+             <th><input type="checkbox"></th>
+             <th></th>
+             <th>Name</th>
+             <th>Size</th>
+             <th>Last Modified</th>
+          </tr>
+         </thead>
+         <tbody>
+          <tr>
+             <td class="text-large"><input type="checkbox"/></td>
+             <td><span class="file-type ion-ios-copy-outline"></span></td>
+             <td>File 1.ogg.bak</td>
+             <td>1.2Mb</td>
+             <td>53 minutes ago</td>
+          </tr>
+         </tbody>
+      </table>
+    
+    </form>
 
     </div>
-    <div class="applet-body">
-      
-     
-      
-    </div>
+
   </div>
 </div>
 {% endblock %}

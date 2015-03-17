@@ -115,6 +115,8 @@ USE_TZ = True
 
 MENU_SELECT_PARENTS = True
 
+AUTH_USER_MODEL = 'site.User'
+
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/1.6/howto/static-files/

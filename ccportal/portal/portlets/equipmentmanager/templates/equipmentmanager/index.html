@@ -7,7 +7,7 @@
 <div class="content-span-header">
   <h1>Equipment Manager</h1>
 </div>
-<div class="applet-row">
+<div class="applet-row equipment-manager">
   <!-- list of threads/conversations-->
   <div class="applet-col applet-col-2">
 
@@ -18,61 +18,44 @@
     <div class="applet-body">
       <!-- thread -->
       <div class="thread-pane">
-        <img src="{% static 'images/taf.png' %}" class="circular-img">
+        
+        <span class="equipment-state state-possess"></span>
+        <span class="equipment-icon ion-ios-videocam-outline"></span>
+
         <div class="description">
-          <h5>Taf River</h5>
-          <p class="thread-snippet-time"> - Cardiff</p>
-          <p class="thread-snippet">Lorem ipsum dolor sit amet</p>
-        </div>
-      </div>
-      <div class="thread-pane">
-        <img src="{% static 'images/rhine.png' %}" class="circular-img">
-        <div class="description">
-          <h5>Rhine Falls</h5>
-          <p class="thread-snippet-time"> - Zurich</p>
-          <p class="thread-snippet">Lorem ipsum dolor sit amet</p>
-        </div>
-      </div>
-      <div class="thread-pane active">
-        <img src="{% static 'images/gotthard.png' %}" class="circular-img">
-        <div class="description">
-          <h5>Gotthard Pass</h5>
-          <p class="thread-snippet-time"> - Swiss Alps</p>
-          <p class="thread-snippet">Lorem ipsum dolor sit amet</p>
+          <h5>Canon 5D</h5>
+          <p class="thread-snippet-time">- CC234</p>
+          <p class="thread-snippet">Checked Out: <span class="text-bold">21/01/15, 4:31pm</span></p>
         </div>
       </div>
     </div>
 
     <div class="applet-column-group">
-      
       <h4>Equipment</h4>
-
     </div>
 
     <div class="applet-body">
 
       <div class="thread-pane">
-        <img src="{% static 'images/taf.png' %}" class="circular-img">
+        
+        <span class="equipment-state state-avalible"></span>
+        <span class="equipment-icon ion-ios-videocam-outline"></span>
+
         <div class="description">
-          <h5>Taf River</h5>
-          <p class="thread-snippet-time"> - Cardiff</p>
-          <p class="thread-snippet">Lorem ipsum dolor sit amet</p>
+          <h5>Gen. 1.3M Tripod</h5>
+          <p class="thread-snippet-time">- T1</p>
+          <p class="thread-snippet">Available since: 10/01/15</p>
         </div>
-      </div>
+      </div>      
       <div class="thread-pane">
-        <img src="{% static 'images/rhine.png' %}" class="circular-img">
+        
+        <span class="equipment-state state-avalible"></span>
+        <span class="equipment-icon ion-ios-videocam-outline"></span>
+
         <div class="description">
-          <h5>Rhine Falls</h5>
-          <p class="thread-snippet-time"> - Zurich</p>
-          <p class="thread-snippet">Lorem ipsum dolor sit amet</p>
-        </div>
-      </div>
-      <div class="thread-pane">
-        <img src="{% static 'images/gotthard.png' %}" class="circular-img">
-        <div class="description">
-          <h5>Gotthard Pass</h5>
-          <p class="thread-snippet-time"> - Swiss Alps</p>
-          <p class="thread-snippet">Lorem ipsum dolor sit amet</p>
+          <h5>Canon 60D</h5>
+          <p class="thread-snippet-time">- CC222</p>
+          <p class="thread-snippet">Available since: 10/01/15</p>
         </div>
       </div>
       <!-- thread 2 etc... -->
@@ -80,16 +63,65 @@
   </div>
   <!-- chat window -->
   <div class="applet-col applet-col-4">
-    <div class="applet-header">
-      
-      <h4>
-        Gotthard Pass
-      </h4>
+    <div class="applet-body">
+      <ul class="applet-header-list text-secondary">
+        <li><span class="text-bold text-primary">Canon 60D</span></li>
+        <li>CC222</li>
+        <li>Insurance Number: 44 AAS MKH S</li>
+      </ul>
+
+      <div class="equipment-description">
+        <p>Malesuada quis montes. Egestas dignissim eu. Faucibus morbi quis. Quam et nulla pretium luctus nulla vestibulum vestibulum ut. Orci ipsum egestas. Quis id dui. Order Number: 155625; Lorem vel non diam netus massa et sociis mi fugiat commodo orci est aut mattis. Aliquam libero enim proin integer diam sit purus sed. Wisi risus donec eleifend quisque sed. Maecenas penatibus phasellus. Et elit enim sed iaculis ut eget scelerisque mi. Integer imperdiet arcu. </p>
+      </div>
 
     </div>
-    <div class="applet-body">
-      
-     
+    <div class="applet-cell">
+
+      <div class="applet-column-group">
+        <h4>Usage History</h4>
+      </div>
+
+      <table class="applet-table">
+         <thead>
+          <tr>
+             <th>Location (Lat., Long.)</th>
+             <th>State</th>
+             <th>Timestamp</th>
+             <th>User</th>
+             <th>Message</th>
+          </tr>
+         </thead>
+         <tbody>
+          <tr>
+             <td class="text-secondary">46.586355, 8.562244</td>
+             <td><span class="equipment-state state-loan"></span>On Loan</td>
+             <td>53 minutes ago</td>
+             <td><a href="/">Daniel Koehler</a></td>
+             <td class="wrap text-small text-secondary">Checked out for an personal project. As per the talk with H.J.</td>
+          </tr>
+          <tr>
+             <td class="text-secondary">46.586355, 8.562244</td>
+             <td><span class="equipment-state state-avalible"></span>On Loan</td>
+             <td>53 minutes ago</td>
+             <td><a href="/">Toby Coleman</a></td>
+             <td class="wrap text-small text-secondary">Returned to office, sustained a small stratch to the grip.</td>
+          </tr>
+          <tr>
+             <td class="text-secondary">42.586355, 8.562244</td>
+             <td><span class="equipment-state state-loan"></span>On Loan</td>
+             <td>3 days ago</td>
+             <td><a href="/">Toby Coleman</a></td>
+             <td class="wrap text-small text-secondary">Taken home to get addition footage. </td>
+          </tr>
+          <tr>
+             <td class="text-secondary">46.586355, 8.562244</td>
+             <td><span class="equipment-state state-loan"></span>On Loan</td>
+             <td>4 days ago</td>
+             <td><a href="/">Toby Coleman</a></td>
+             <td class="wrap text-small text-secondary">Taken to today’s shoot.</td>
+          </tr>
+         </tbody>
+      </table>
       
     </div>
   </div>

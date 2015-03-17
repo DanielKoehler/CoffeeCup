@@ -2,13 +2,12 @@
 from django.core.urlresolvers import reverse
 from menu import Menu, MenuItem
 
-
 children = (
 
     MenuItem("Users",
              reverse("portal.portlets.useradministration.views.users"),
              weight=10,
-             icon="ios-person"),
+             icon="ios-person-outline"),
 
     MenuItem("User Groups",
              reverse("portal.portlets.useradministration.views.groups"),

@@ -1,5 +1,3 @@
-
-
 /*
  * Base structure
  */
@@ -189,10 +187,6 @@ button:focus {
   display: none;
 }
 
-.sidebar-children-indicator {
-    float: right;
-}
-
 @media (min-width: 768px) {
   .sidebar {
     position: fixed;
@@ -231,7 +225,7 @@ button:focus {
     line-height: 40px;
     width: 100%;
     list-style: none;
-    background: rgba(90, 175, 238, 0.5);
+    background: rgba(118, 176, 220, 0.5);
     display: block;
     padding-left: 38px;
     font-size: 12px;
@@ -250,8 +244,6 @@ button:focus {
     padding: 0;
     margin: 0;
     font-size: 17px;
-    text-align: center;
-    min-width: 30px;
 }
 
 .nav-sidebar > li > ul.submenu {
@@ -430,10 +422,6 @@ img.user-image {
 
 .applet-col-4 {
     width: 70%; 
-}
-
-.applet-col-6 {
-    width: 100%; 
 }
 
 /* main content's heading */
@@ -716,6 +704,14 @@ img.user-image {
 
 /* end amazing css */
 
+
+.applet-body .description {
+    display: inline-block;      
+    margin: 0px;         
+    position: relative;   
+    vertical-align: middle;
+}
+
 .applet-col.col-stretch {
     height: 608px;
 }
@@ -752,18 +748,18 @@ img.user-image {
 }
 
 .login-wrap {
-    width: 357px;
+    width: 413px;
     height: 499px;
-    /* border: 1px solid #E9E9E9; */
+    border: 1px solid #E9E9E9;
     border-radius: 4px;
-    margin: 80px auto;
+    margin: 100px auto;
     overflow: hidden;
 }
 
 .login-header {
-    /* background: #F9F9F9; */
+    background: #F9F9F9;
     height: 80px;
-    /* border-bottom: 1px solid #E9E9E9; */
+    border-bottom: 1px solid #E9E9E9;
     display: inline-block;
     width: 100%;
 }
@@ -780,10 +776,9 @@ img.user-image {
 
 .login-footer {
     background: #3C5A9D;
-    /* border-top: 2px solid #20335E; */
-    height: 61px;
-    line-height: 58px;
-    border-radius: 4px;
+    border-top: 2px solid #20335E;
+    height: 85px;
+    line-height: 77px;
 }
 
 .login-form button {
@@ -813,7 +808,7 @@ input:focus {
 }
 
 .login-footer p {
-    font-size: 16px;
+    font-size: 17px;
     text-align: center;
     display: inline-block;
     color: #FFF;
@@ -821,26 +816,11 @@ input:focus {
 }
 
 img.login-icon {
-    margin: 0px 17px;
+    margin: 0px 26px;
 }
 
-.text-bold {
+span.text-bold {
   font-family: 'lato-bold';
-}
-
-.text-small {
-  font-size: 12px;
-}
-
-
-
-
-.text-primary {
-  color: #484848;
-}
-
-.text-secondary {
-  color: #878787;
 }
 
 
@@ -897,131 +877,4 @@ ul.drop-menu li {
 .user-menu:hover > .drop-menu {
     cursor: pointer;
     display: inline-block;
-}
-
-span.equipment-state {
- display: inline-block;
- width: 16px;
- height: 16px;
- border-radius: 50%;
- vertical-align: middle;
-}
-
-span.equipment-state.state-avalible {
- background: #74D478; 
- border: 2px solid rgb(199, 237, 201);   
-}
-
-span.equipment-state.state-loan {
- background: #F5A623; 
- border: 2px solid rgb(250, 207, 136);   
-}
-
-span.equipment-icon {
-    font-size: 23px;
-    color: #D8D8D8;
-    vertical-align: middle;
-    margin: 0px 25px;
-}
-
-.equipment-manager .description {
-    width: calc(100% - 100px);
-}
-
-
-.applet-header-list {
-    list-style: none;
-    font-size: 18px;
-    margin: 42px 52px 35px;
-    padding: 0;
-}
-
-.applet-header-list li {
-    display: inline-block;
-    position: relative;
-    margin-right: 20px;
-}
-
-.applet-header-list li:after {
-    content: "";
-    width: 1px;
-    height: 34px;
-    background: #E9E9E9;
-    position: absolute;
-    right: -13px;
-    top: -4px;
-}
-
-.applet-table tr {
-    height: 50px;
-}
-
-.applet-table tr th {
-    font-family: 'Lato';
-    font-style: italic;
-    font-weight: 400;
-    padding-left: 25px;
-    white-space: nowrap;
-    color: #484848;
-}
-
-.applet-table tr td {
-    white-space: nowrap;
-    padding: 0px 12px;
-}
-
-.applet-table tr td.wrap {
-  white-space: initial;
-}
-
-.applet-table a {
-    color: #5AAFEE;
-}
-
-.applet-table tr td:first-child {
-  padding-left:25px
-}
-.applet-table tr td:first-child {
-  padding-left:25px
-}
-
-.applet-table tbody tr:nth-child(odd) {
-  background: #F9F9F9;
-}
-
-.applet-cell {
-    border-top: 1px solid #E9E9E9;
-    width: 100%;
-}
-
-.applet-header-list li:last-child:after {
-    display:none;
-}
-
-.applet-table tr {
-  border-bottom: 1px solid #E9E9E9;
-}
-
-
-.equipment-description {
-    font-size: 12px;
-    line-height: 20px;
-    color: #6E6E6E;
-    width: 50%;
-    margin: 0 52px;
-    margin-bottom: 42px;
-}
-
-.applet-table .equipment-state {
-    margin-right: 12px;
-}
-
-table.applet-table {
-    width: 100%;
-}
-
-
-span.file-type {
-    font-size: 23px;
-    vertical-align: middle;
 }

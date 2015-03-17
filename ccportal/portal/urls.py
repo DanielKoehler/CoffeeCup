@@ -11,7 +11,8 @@ urlpatterns = patterns('',
 
 	# Login 
 
-	url(r'^login/$', 'portal.site.views.login'),
+    url(r'^login/$', 'portal.site.views.user_login'),
+	url(r'^logout/$', 'portal.site.views.user_logout'),
 
 	# Portlets
     url(r'^$', 'portal.portlets.dashboard.views.index', name='index'),
@@ -25,6 +26,6 @@ urlpatterns = patterns('',
     url(r'^investorbulletin/', include('portal.portlets.investorbulletin.urls')),
 
     # Admin
-    url(r'^modeladmin/', include(admin.site.urls)),
+    url(r'^admin/', include(admin.site.urls)),
     
 )

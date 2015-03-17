@@ -1,13 +1,23 @@
 from django.db import models
+from time import time
+
 
 # Create your models here.
 
-class User(models.Model):
+class Location(models.Model):
+    title = models.CharField(max_length=255)
+    image = models.ImageField(height_field=10, width_field=100)
+    
+    latitude = models.FloatField(null=True, blank=True)
+    longitude = models.FloatField(null=True, blank=True)
 
+    description = models.TextField()
+    added = time()
+    author = models.IntegerField()
 
-
-	"""docstring for UserAuth"""
-	def __init__(self, arg):
-		super(UserAuth, self).__init__()
-		self.arg = arg
-		
+  
+class Photo(models.Model): 
+    id = models.IntegerField(primary_key=True, unique=True)
+    description = models.TextField()
+    photo = models.ImageField(height_field=10, width_field=100)
+    location = models.ForeignKey('Location', to_field='id')
