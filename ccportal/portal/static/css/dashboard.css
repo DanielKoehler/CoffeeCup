@@ -4,6 +4,14 @@
  * Base structure
  */
 
+ @font-face {
+  font-family: 'Lato';
+  font-style: normal;
+  font-weight: 700;
+  src: local('Lato Bold'), local('Lato-Bold'), url(../fonts/Lato-Bold.woff2) format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2212, U+2215, U+E0FF, U+EFFD, U+F000;
+}
+
 @font-face {
   font-family: 'Lato';
   font-style: normal;
@@ -23,10 +31,12 @@
 @font-face {
   font-family: 'Lato';
   font-style: normal;
-  font-weight: 700;
-  src: local('Lato Bold'), local('Lato-Bold'), url(../fonts/Lato-Bold.woff2) format('woff2');
-  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2212, U+2215, U+E0FF, U+EFFD, U+F000;
+  font-weight: 300;
+  src: local('Lato Light'), local('Lato-Light'), url(../fonts/Lato-Light.woff2) format('woff2');
+  unicode-range: U+0100-024F, U+1E00-1EFF, U+20A0-20AB, U+20AD-20CF, U+2C60-2C7F, U+A720-A7FF;
 }
+
+
 
 /* Move down content because we have a fixed navbar that is 50px tall */
 body {
@@ -66,6 +76,11 @@ button:focus {
   height: 100px;
 }
 
+.navbar-fixed-top.navbar-dark {
+    color: #FFF;
+    background: #2D3840;
+}
+
 .navbar-nav>li {
 
 }
@@ -77,15 +92,15 @@ button:focus {
   margin-top: 34px;
   margin-bottom: 35px;
   margin-right: 14px;
-  color: #484848;
+  color: inherit;
   line-height: 20px;
 }
 
 .navbar-brand {
   font-family: Lato;
   font-size: 36px;
-  font-weight: 100;
-  color: #484848;
+  font-weight: 200;
+  color: inherit;
   line-height: 44px;
 }
 
@@ -391,11 +406,12 @@ img.user-image {
   border-collapse: collapse;
 }
 
-.content-span-header > h1 {
+.content-span-header h1, .applet-col .applet-column-group h1 {
   line-height: 119px;
   margin: 0;
   margin-left: 75px;
-  font-family: Lato;   font-weight: 600;
+  font-family: Lato;   
+  font-weight: 600;
   font-size: 36px;
   color: #484848;
   white-space: nowrap;
@@ -426,6 +442,13 @@ img.user-image {
   height: 151%;
 }
 
+.details-events {
+    width: 90%;
+    min-height: 300px;
+    border: 1px solid #E9E9E9;
+    margin: 7px 0px;
+}
+
 /* left and right columns for threads/messages */
 .applet-col-2 {
     width: 30%;
@@ -441,30 +464,37 @@ img.user-image {
 
 /* main content's heading */
 .applet-header{
-  padding-left:35px;
-  padding-top: 46px;
-  padding-bottom: 44px;
+  padding: 0;
+  padding-left: 35px;
   border-bottom: 1px solid #E9E9E9;
   padding-right: 30px;
+  height: 112px;
+  box-sizing: border-box;
+  display: inline-block;
+  width: 100%;
+  line-height: 112px;
 }
 
-.applet-header h4{
+.applet-header > * {
   margin: 0px;
   font-weight: bold;
-  display: inline;
+  display: inline-block;
+  overflow: hidden;
+  height: 112px;
+  width:100%;
+  line-height: 112px;
 }
 
 .applet-header a{
   float: right;
+  vertical-align: middle;
 }
 
 .header-icon-desc{
-  float:left;
   font-size: 14px;
   font-family: Lato;
-  font-weight: 300;
-  margin-top: 3px;
-  margin-right:5px;
+  font-weight: 100;
+  vertical-align: middle;
 }
 
 /* main content's body */
@@ -516,9 +546,10 @@ img.user-image {
 
 .thread-snippet{
   font-family: Lato;
-  font-weight: 300;
+  font-weight: normal;
   padding-bottom: 9px;
   margin-bottom: 0px;
+  font-size: 12px;
   display: inline-block;
   width: 100%;
 }
@@ -600,15 +631,16 @@ img.user-image {
   color: inherit;
 }
 
-.applet-icon{
+.applet-icon, a.applet-icon{
   font-size: 21px;
   font-weight: bold;
-  margin: -5px 10px;
+  margin: 41px 10px;
   display: inline-block;
-  float: left;
+  line-height: 21px;
   padding: 3px 35px;
   border-radius: 25px;
   color: white;
+  float: right;
 }
 
 .applet-icon.icon-red{
@@ -707,6 +739,7 @@ img.user-image {
 
 .thread-pane:hover {
   background:#EEE;
+  cursor: pointer;
 }
 
 .thread-pane.active .thread-snippet-time {
@@ -743,7 +776,7 @@ img.user-image {
     padding: 10px 32px;
 }
 
-.login-form input, .login-form button {
+.form input, .form button, .form textarea {
   border: 1px solid #E9E9E9;
   border-radius: 4px;
   font-family: Lato;
@@ -755,6 +788,11 @@ img.user-image {
   margin: 27px auto;
   display: block;
   text-indent: 20px;
+}
+
+.form textarea {
+  height:auto;
+  line-height:initial;
 }
 
 .login-wrap {
@@ -836,12 +874,17 @@ img.login-icon {
   font-weight: 600;
 }
 
+.text-normal {
+  font-size: 14px;
+}
+
 .text-small {
   font-size: 12px;
 }
 
-
-
+.text-centre {
+  text-align: center;
+}
 
 .text-primary {
   color: #484848;
@@ -907,7 +950,7 @@ ul.drop-menu li {
     display: inline-block;
 }
 
-span.equipment-state {
+.equipment-state {
  display: inline-block;
  width: 16px;
  height: 16px;
@@ -915,17 +958,23 @@ span.equipment-state {
  vertical-align: middle;
 }
 
-span.equipment-state.state-avalible {
+.applet-table .equipment-state {
+  
+  margin-right:20px
+
+}
+
+.equipment-state.state-avalible {
  background: #74D478; 
  border: 2px solid rgb(199, 237, 201);   
 }
 
-span.equipment-state.state-loan {
+.equipment-state.state-loan {
  background: #F5A623; 
  border: 2px solid rgb(250, 207, 136);   
 }
 
-span.equipment-icon {
+.equipment-icon {
     font-size: 23px;
     color: #D8D8D8;
     vertical-align: middle;
@@ -1000,6 +1049,7 @@ span.equipment-icon {
 .applet-cell {
     border-top: 1px solid #E9E9E9;
     width: 100%;
+    min-height: 100%;
 }
 
 .applet-header-list li:last-child:after {
@@ -1020,6 +1070,14 @@ span.equipment-icon {
     margin-bottom: 42px;
 }
 
+.applet-col-header.header-thin  {
+    height: 55px;
+    line-height: 50px;
+    font-size: 17px; };
+};
+    line-height: 55px;
+}
+
 .applet-table .equipment-state {
     margin-right: 12px;
 }
@@ -1029,7 +1087,409 @@ table.applet-table {
 }
 
 
-span.file-type {
+.file-type {
     font-size: 23px;
     vertical-align: middle;
+}
+
+
+
+/*Scheduler*/
+
+
+.scheduler .applet-col-header i {
+  color: #5AAFEE;
+  font-size: 20px;
+  vertical-align: middle;
+  line-height: 55px;
+  cursor: pointer;
+}
+
+
+.scheduler .applet-col-header .scheduler-year,.scheduler .applet-col-header .scheduler-monthday {
+    vertical-align: middle;
+
+    font-family: Lato;
+}
+
+.scheduler .applet-col-header .scheduler-monthday {
+    font-weight: 600;
+
+    padding-left: 15px;
+}
+
+.scheduler .applet-col-header .scheduler-year {      
+    font-weight: 200;
+
+    padding-right: 15px;
+}
+
+
+.day-details .calendar-month-view .week-titles {
+    border-bottom: 2px solid #CCCCCC;
+}
+
+.day-details .calendar-month-view  {
+    width: 176px;
+    float: left;
+}
+
+.day-details .calendar-month-view .week-titles .calendar-item {
+    font-size: 8px;
+    padding: 0;
+    color: #D8D8D8;
+}
+
+.day-details .calendar-month-view .week-row .calendar-item:hover, 
+.day-details .calendar-month-view .week-row .calendar-item.active {
+  background: #5AAFEE;
+  cursor: pointer;
+  color: #FFF;
+}
+
+.day-details .calendar-month-view .calendar-item {
+    width: 20px;
+    display: inline-block;
+    overflow: hidden;
+    font-size: 10px;
+    text-align:center;
+    padding: 3px 0;
+    margin: 1px 1px;
+}
+
+.day-details .calendar-month-view .week-row
+{ 
+  position: relative;
+}
+
+.day-details .calendar-month-view .week-row:before,.day-details .calendar-month-view .week-row:after {
+  content: "";
+  display: block;
+  width: 22px;
+  height: 100%;
+  background: #F9F9F9;
+  position: absolute;
+  z-index: -1;
+  top:0;
+}
+
+.day-details .calendar-month-view .week-row:after {
+  right:0;
+
+}
+
+.day-details {
+    width: 45%;
+    margin-right: 5%;
+    float: left;
+    padding: 50px 0;
+    min-height: 100%;
+}
+
+.day-timeline {
+    width: 42%;
+    margin-left: 8%;
+    float: left;
+}
+
+.hour {
+    height: 47px;
+    border-bottom: 1px solid #D6D6D6;
+    width: 100%;
+    position: relative;
+}
+
+.hours {
+    width: 95%;
+    margin-right: 5%;
+    padding: 50px 0;
+}
+
+.hour:after {
+    content:"";
+    height:0px;
+    width:100%;
+    border-top:1px dotted #D6D6D6;
+    position:absolute;
+    top:50%;
+}
+
+.hours-header {
+  border-bottom:2px solid #D6D6D6;
+  border-top:2px solid #D6D6D6;
+  height: 14px;
+  position: relative;
+}
+
+.hour .hour-label {
+    font-size: 9px;
+    position: absolute;
+    right: 101%;
+    bottom: -7px;
+    text-transform: uppercase;
+}
+
+.day-timeline .timeline-day {
+    font-weight: 600;
+    font-size: 9px;
+}
+
+.day-timeline .hours-header:before {
+    content: "all-day";
+    right: 101%;
+    position: absolute;
+    top: 0;
+    line-height: 100%;
+    white-space: nowrap;
+    font-weight: 300;
+    font-size: 9px;
+}
+
+.details-header {
+    border-bottom: 2px solid #CCCCCC;
+    width: 90%;
+    display: table;
+}
+
+
+.details-day {
+    display: inline-block;
+    font-size: 96px;
+    font-weight: 100;
+    padding: 0;
+    height: 101px;
+    margin: 0;
+    float: left;
+    line-height: 104px;
+    padding-left: 7px;
+}
+
+.details-date-textual {
+    width: calc(100% - 176px);
+    float: left;
+    padding-left: 20px;
+    display: block;
+}
+
+.details-events .event {
+    height: 54px;
+    position: relative;
+    border-bottom: 1px solid #E9E9E9;
+}
+
+.details-events .event.active:before {
+    content: "";
+    height: 55px;
+    position: absolute;
+    left: -1px;
+    top: -1px;
+    width: 4px;
+    background:#5AAFEE;
+}
+
+.event-title {
+    font-size: 14px;
+    width: calc(100% - 144px);
+    padding: 10px 15px;
+    display: inline-block;
+    font-weight: 600;
+    height: 100%;
+    float: left;
+}
+
+.start-time, .end-time {
+    color: #818181;
+    display: inline-block;
+    width: 140px;
+    height: 50%;
+    padding-right: 5px;
+    font-size: 12px;
+    line-height: 100%;
+    vertical-align: middle;
+    text-align: right;
+    float: left;
+}
+
+.start-time {
+    padding-top: 13px;
+
+}
+
+.end-time {
+    padding-bottom: 10px;
+
+}
+
+.non-vertically-padded {
+    padding-top: 0px;
+    padding-bottom: 0;
+}
+
+img.profile-large {
+    height: 70px;
+    width: 70px;
+    display: inline-block;
+    float: left;
+    margin: 21px 28px 20px 0;
+}
+
+.user-header {
+    height: 112px;
+    display: inline-block;
+    width: 350px;
+}
+
+.applet-header .icon {
+    vertical-align: middle;
+    padding-left: 13px;
+    font-size: 24px;
+}
+
+.user-header .applet-header-list {
+    margin: 0;
+    display: inline-block;
+    line-height: 25px;
+    height: 25px;
+    float: left;
+    margin-top: 32px;
+}
+
+.user-header .added {
+    display: inline-block;
+    float: left;
+    line-height: 24px;
+    font-size: 12px;
+    color: #9B9B9B;
+    font-weight: 400;
+}
+
+.user-header .applet-header-list li:after {
+    width: 2px;
+    height: 24px;
+    top: 2px;
+}
+
+
+.user-details-form input {
+    margin: 0;
+}
+
+.input-row {
+    padding: 20px 100px;
+}
+
+.input-row label {
+    width: 20%;
+    text-align: right;
+    display: inline-block;
+    float: left;
+    line-height: 43px;
+}
+
+.input-row input, .input-row textarea {
+    display: inline-block;
+    margin-left: 5%;
+    margin-top: 0px;
+    margin-bottom: 0px;
+    height: 45px;
+    width: 70%;
+}
+
+.group-icon {
+    font-size: 26px;
+    vertical-align: middle;
+    margin-right: 20px;
+}
+
+.applet-table tbody tr:hover {
+    background: #f5f5f5 !important;
+}
+
+.user-groups tr {
+    font-size: 15px;
+    line-height: 47px;
+    vertical-align: middle;
+}
+
+tr.permission-group th {
+    height: 50px;
+    background: #F2F2F2;
+    font-size: 18px;
+    font-weight: 600;
+    font-style: normal;
+}
+
+.applet-table.no-head {
+    border-top: 1px solid #E9E9E9;
+}
+
+
+/*Checkboxes*/
+
+.permissions td input[type="checkbox"] {
+  margin-left: 20px;
+}
+
+.permissions input[type="checkbox"] {
+
+    background: #FFFFFF;  
+    border: 1px solid #5AAFEE; 
+    border-radius: 4px;
+    width: 20px;
+    height:20px;
+    display: inline-block;
+    vertical-align: sub;
+    margin: 0 30px 0 0;
+    position:relative;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    -o-appearance:none;
+    appearance: none;
+
+}
+
+.permissions input[type="checkbox"]:after {
+    border:0px solid rgb(222, 239, 252);
+    content:"";
+    width:calc(100% + 10px);
+    height:calc(100% + 10px);
+    position:absolute;
+    text-align: center;
+    vertical-align: middle;
+    color:#5AAFEE;
+    left:-5px;
+    top:-5px;
+    border-radius:8px;
+    font-family: Ionicons;
+    font-size: 11px;
+    line-height: 20px;
+}
+
+.permissions input[type="checkbox"]:checked:after {
+  content: "\f121";
+  border-width: 4px;
+}
+
+.permissions input[type="checkbox"].partial:checked:after {
+  content: "\f208";
+}
+
+.permissions input[type="checkbox"].orange {
+  border: 1px solid #F5A623;
+} 
+
+
+.permissions input[type="checkbox"].orange:after {
+  border-color:rgb(251, 221, 171);
+  color: #F5A623;
+}
+
+.permissions input[type="checkbox"]:focus {
+    outline:0;
+}
+
+
+
+span.group-title {
+    line-height: 48px;
 }

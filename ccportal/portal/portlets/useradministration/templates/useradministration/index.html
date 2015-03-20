@@ -7,13 +7,13 @@
 <div class="content-span-header">
   <h1>User Administration</h1>
 </div>
-<div class="applet-row">
+<div class="applet-row user-administration">
   <!-- list of threads/conversations-->
   <div class="applet-col applet-col-2">
     <div class="applet-header">
       <h4>
         Users 
-        <a href=""><span class="header-icon-desc">new</span><span class="sidebar-icon ion-ios-plus-outline"></span></a>
+        <a href=""><span class="header-icon-desc">new</span><span class="icon ion-ios-plus-outline"></span></a>
       </h4>
     </div>
 
@@ -40,6 +40,13 @@
           <p class="thread-snippet">Camera Engineer</p>
         </div>
       </div>
+      <div class="thread-pane">
+        <img src="{% static 'images/dan_avtr.png' %}" class="circular-img">
+        <div class="description">
+          <h5>Daniel Koehler (Me)</h5>
+          <p class="thread-snippet">Billionaire Playboy Philanthropist</p>
+        </div>
+      </div>
 
       <!-- thread 2 etc... -->
     </div>
@@ -47,17 +54,117 @@
   <!-- chat window -->
   <div class="applet-col applet-col-4">
     <div class="applet-header">
-      
-      <h4>
-        Gotthard Pass
-      </h4>
 
-    </div>
-    <div class="applet-body">
-      
-     
-      
-    </div>
+      <div class="user-header">
+        <img src="{% static 'images/rob_avtr.png' %}" class="profile-large circular-img">
+        <ul class="applet-header-list">
+          <li class="full-name">Rob Johnson</li>
+          <li class="text-secondary">rjohnson</li>
+        </ul>
+
+        <span class="added">added 4 months ago.</span>
+
+      </div>
   </div>
+
+  <div class="applet-column-group">
+    <h4>Personal Details</h4>
+  </div>
+
+  <div class="applet-body">
+  
+    
+
+    <form class="user-details-form form">
+        
+        <div class="input-row">
+          <label>First Name</label><input type="text" value="Rob">
+        </div>
+        <div class="input-row">
+          <label>Last Name</label><input type="text" value="Johnson">
+        </div>
+        <div class="input-row">
+          <label>Username</label><input type="text" value="rjohnson">
+        </div>
+        <div class="input-row">
+          <label>Role</label><input type="text" class="autocomplete" value="Camera Engineer">
+        </div>
+        <div class="input-row">
+          <label>About</label><textarea class="text-area"></textarea>
+        </div>
+    </form>
+    
+  </div>
+
+  <div class="applet-column-group">
+    <h4>Groups</h4>
+  </div>
+
+  <div class="applet-body">
+      <table class="applet-table user-groups no-head">
+         <tbody>
+          <tr>
+             <td><span class="group-icon ion-ios-people-outline"></span>Camera Crew</td>
+          </tr>
+          <tr>
+             <td><span class="group-icon ion-ios-people-outline"></span>Coffee Stream Curators</td>
+          </tr>
+         </tbody>
+      </table>
+  </div>
+
+  <div class="applet-column-group">
+    <h4>Permissions</h4>
+  </div>
+
+  <div class="applet-body">
+    
+      <table class="applet-table permissions">
+         <thead class="indented">
+          <tr>
+             <th></th>
+             <th>Permission</th>
+             <th>Since</th>
+             <th>Authorised By</th>
+             <th>Description</th>
+          </tr>
+         </thead>
+         <tbody>
+
+            <tr class="permission-group">
+              <th colspan="5"><input type="checkbox" class="partial"/><span class="group-title">CoffeeCup CMS</span></th>
+            </tr>
+            <tr>
+               <td></td>
+               <td><input type="checkbox"/> Upload Media</td>
+               <td>53 minutes ago</td>
+               <td><a href="">Daniel Koehler</a></td>
+               <td class="wrap text-secondary">Allows user to upload and sematically descibe media on Coffee Stream.  </td>
+            </tr>
+            <tr>
+               <td></td>
+               <td><input type="checkbox"/> Upload Media</td>
+               <td>53 minutes ago</td>
+               <td><a href="">Daniel Koehler</a></td>
+               <td class="wrap text-secondary">Allows user to upload and sematically descibe media on Coffee Stream.  </td>
+            </tr>
+
+            <tr class="permission-group">
+              <th colspan="5"><input type="checkbox" class="orange"/><span class="group-title">CoffeeStream</span></th>
+            </tr>
+            <tr>
+               <td></td>
+               <td><input type="checkbox"/> Upload Media</td>
+               <td>53 minutes ago</td>
+               <td><a href="">Daniel Koehler</a></td>
+               <td class="wrap text-secondary">Allows user to upload and sematically descibe media on Coffee Stream.  </td>
+            </tr>
+
+         </tbody>
+      </table>
+
+  </div>
+
+
 </div>
 {% endblock %}
