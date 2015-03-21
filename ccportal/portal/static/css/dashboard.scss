@@ -4,36 +4,82 @@
  * Base structure
  */
 
- @font-face {
-  font-family: 'Lato';
+
+// Adding some variables to make it easier to edit multiple things.
+// I've named them as appropriately as I could, without actually knowing what each color is for.
+
+// VARIABLES
+// Fonts
+  // Family / Style
+    $main: 'Lato';
+    $mainBold: Lato-Bold;
+    $mainSerif: 'Lato', sans-serif;
+
+  // Weight
+    // .header-icon-desc and .details-day
+      $weight1: 100;
+    // .navbar-brand and scheduler year column
+      $weight2: 200;
+    // font-face only
+      $weight3: 300;
+    // Msg description, applet table, etc.
+      $weight4: 400;
+    // User full name, login header, .text-bold and etc.
+      $weight5: 600;
+    // font-face only
+      $weight6: 700;
+
+// Colors
+  // Primary text and more.
+    $color1: #484848;
+  // Secondary text color
+    $textSecondary: #878787;
+  // Navbar/sidebar BG, project title, login form BG/button and more.
+    $color2: #5AAFEE;
+  // Login header, equipment description
+    $color3: #6E6E6E;
+  // Sidebar list and applet table nth children BG and etc.
+    $color4: #F9F9F9;
+  // Mostly borders (E.g for Navbar/sidebar, messages, applets etc)
+    $borders: #E9E9E9;
+
+// Paddings
+  $chatInputPadding: 11px 22px;
+
+// Unicode
+  $unicodeRange1: U+0000-00FF, U+0131, U+0152-0153, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2212, U+2215, U+E0FF, U+EFFD, U+F000;
+  $unicodeRange2: U+0100-024F, U+1E00-1EFF, U+20A0-20AB, U+20AD-20CF, U+2C60-2C7F, U+A720-A7FF;
+
+@font-face {
+  font-family: $main;
   font-style: normal;
-  font-weight: 700;
+  font-weight: $weight6;
   src: local('Lato Bold'), local('Lato-Bold'), url(../fonts/Lato-Bold.woff2) format('woff2');
-  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2212, U+2215, U+E0FF, U+EFFD, U+F000;
+  unicode-range: $unicodeRange1
 }
 
 @font-face {
-  font-family: 'Lato';
+  font-family: $main;
   font-style: normal;
-  font-weight: 400;
+  font-weight: $weight4;
   src: local('Lato Regular'), local('Lato-Regular'), url(../fonts/Lato-Regular.woff2) format('woff2');
-  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2212, U+2215, U+E0FF, U+EFFD, U+F000;
+  unicode-range: $unicodeRange1
 }
 
 @font-face {
-  font-family: 'Lato';
+  font-family: $main;
   font-style: normal;
-  font-weight: 100;
+  font-weight: $weight1;
   src: local('Lato Hairline'), local('Lato-Hairline'), url(../fonts/Lato-Hairline.woff2) format('woff2');
-  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2212, U+2215, U+E0FF, U+EFFD, U+F000;
+  unicode-range: $unicodeRange1
 }
 
 @font-face {
-  font-family: 'Lato';
+  font-family: $main;
   font-style: normal;
-  font-weight: 300;
+  font-weight: $weight3;
   src: local('Lato Light'), local('Lato-Light'), url(../fonts/Lato-Light.woff2) format('woff2');
-  unicode-range: U+0100-024F, U+1E00-1EFF, U+20A0-20AB, U+20AD-20CF, U+2C60-2C7F, U+A720-A7FF;
+  unicode-range: $unicodeRange2;
 }
 
 
@@ -41,7 +87,7 @@
 /* Move down content because we have a fixed navbar that is 50px tall */
 body {
   padding-top: 100px;
-  font-family: 'Lato', sans-serif;
+  font-family: $mainSerif;
 }
 
 body,html {
@@ -70,9 +116,9 @@ button:focus {
 
 .navbar-fixed-top {
   border: 0;
-  background: #F9F9F9;
-  border-top: 1px solid #E9E9E9;
-  border-bottom: 1px solid #E9E9E9;
+  background: $color4;
+  border-top: 1px solid $borders;
+  border-bottom: 1px solid $borders;
   height: 100px;
 }
 
@@ -97,9 +143,9 @@ button:focus {
 }
 
 .navbar-brand {
-  font-family: Lato;
+  font-family: $main;
   font-size: 36px;
-  font-weight: 200;
+  font-weight: $weight2;
   color: inherit;
   line-height: 44px;
 }
@@ -111,8 +157,8 @@ button:focus {
 }
 
 .navbar-brand .brand-bold {
-  font-family: Lato;
-  font-weight: 600;
+  font-family: $main;
+  font-weight: $weight5;
 }
 
 .navbar-brand {
@@ -131,7 +177,7 @@ button:focus {
     padding-top: 5px; 
     padding-bottom: 5px;
   border-radius: 40px;
-  background: #5AAFEE;
+  background: $color2;
   -moz-box-shadow:    inset 0px 1px 0px 0px rgba(0,0,0,0.10);
   box-shadow:         inset 0px 1px 0px 0px rgba(0,0,0,0.10);
 }
@@ -141,7 +187,7 @@ button:focus {
 }
 
 .navbar-nav>li.active:hover>a {
-  background: #5AAFEE;
+  background: $color2;
   color: #000;
 }
 
@@ -168,7 +214,7 @@ button:focus {
   width: 140px;
   top: 40px;
   font-size: 14px;
-  color: #5AAFEE;
+  color: $color2;
 }
 
 .project-description {
@@ -187,7 +233,7 @@ button:focus {
     border: none;
     font-size: 25px;
     line-height: 40px;
-    color: #5AAFEE;
+    color: $color2;
 }
 
 .sidebar-project .project-info {
@@ -236,11 +282,11 @@ button:focus {
 }
 
 .nav-sidebar > li:nth-child(even){
-  background:#F9F9F9;
+  background:$color4;
 }
 
 .nav-sidebar > li {
-  border-bottom: 1px solid #E9E9E9;
+  border-bottom: 1px solid $borders;
 }
 
 .nav-sidebar > li > ul.submenu > li {
@@ -260,7 +306,7 @@ button:focus {
 }
 
 .nav-sidebar > li > ul.submenu > li.active {
-  background: #5AAFEE;
+  background: $color2;
 }
 
 .nav-sidebar > li > ul.submenu .sidebar-icon {
@@ -291,11 +337,11 @@ button:focus {
 .nav-sidebar > .active > a,
 .nav-sidebar > .active > a:hover,
 .nav-sidebar > .active > a:focus {
-  color: #5AAFEE;
+  color: $color2;
 }
 
 .nav-sidebar > .active .notification-badge {
-    background: #5AAFEE;
+    background: $color2;
     border: 4px solid #DEEFFC;
 }
 
@@ -348,14 +394,14 @@ img.user-image {
     border: none;     
     font-size: 25px;     
     line-height: 40px;     
-    color: #484848;
+    color: $color1;
     display: inline-block;
 }
 
 .user-fullname {
     display: inline-block;
-    font-family: Lato;
-    font-weight: 600;
+    font-family: $main;
+    font-weight: $weight5;
     font-size: 14px;
     width: 100%;
     text-align: right;
@@ -363,7 +409,7 @@ img.user-image {
 
 .user-description {
     display: inline-block;  
-    font-family: Lato; 
+    font-family: $main; 
     font-size: 10px;
     width: 100%;
     text-align: right;
@@ -402,7 +448,7 @@ img.user-image {
   display: table-row;
   padding: 0 20px;
   line-height: 118px;
-  border-bottom: 1px solid #E9E9E9;
+  border-bottom: 1px solid $borders;
   border-collapse: collapse;
 }
 
@@ -410,15 +456,15 @@ img.user-image {
   line-height: 119px;
   margin: 0;
   margin-left: 75px;
-  font-family: Lato;   
-  font-weight: 600;
+  font-family: $main;   
+  font-weight: $weight5;
   font-size: 36px;
-  color: #484848;
+  color: $color1;
   white-space: nowrap;
 }
 
 .applet-col h1 {
-  font-family: Lato-Bold;
+  font-family: $mainBold;
   font-size: 18px;
   margin: 44px 35px;
 }
@@ -437,7 +483,7 @@ img.user-image {
 .applet-col {
   box-sizing: border-box;
   display: table-cell;
-  border-right: 1px solid #E9E9E9;
+  border-right: 1px solid $borders;
   min-height: 100%;
   height: 151%;
 }
@@ -445,7 +491,7 @@ img.user-image {
 .details-events {
     width: 90%;
     min-height: 300px;
-    border: 1px solid #E9E9E9;
+    border: 1px solid $borders;
     margin: 7px 0px;
 }
 
@@ -466,7 +512,7 @@ img.user-image {
 .applet-header{
   padding: 0;
   padding-left: 35px;
-  border-bottom: 1px solid #E9E9E9;
+  border-bottom: 1px solid $borders;
   padding-right: 30px;
   height: 112px;
   box-sizing: border-box;
@@ -492,8 +538,8 @@ img.user-image {
 
 .header-icon-desc{
   font-size: 14px;
-  font-family: Lato;
-  font-weight: 100;
+  font-family: $main;
+  font-weight: $weight1;
   vertical-align: middle;
 }
 
@@ -545,7 +591,7 @@ img.user-image {
 } 
 
 .thread-snippet{
-  font-family: Lato;
+  font-family: $main;
   font-weight: normal;
   padding-bottom: 9px;
   margin-bottom: 0px;
@@ -569,8 +615,8 @@ img.user-image {
 
 .thread-snippet-time{
   display: inline;
-  font-family: Lato;
-  font-weight: 400;
+  font-family: $main;
+  font-weight: $weight4;
   font-style: italic;
   margin-bottom: 0px;
 
@@ -591,8 +637,8 @@ img.user-image {
 .message-description p {
   max-width: 500px;
   font-size: 12px;
-  font-family: Lato;   
-  font-weight: 400;
+  font-family: $main;   
+  font-weight: $weight4;
 }
 
 .time-stamp{
@@ -601,14 +647,14 @@ img.user-image {
 }
 
 .time-stamp p{
-  font-family: Lato;
+  font-family: $main;
   font-style: italic;
   display: inline-block;
   margin-bottom: 0px;
 }
 
 .line{
-  border-top: 1px solid #E9E9E9;
+  border-top: 1px solid $borders;
   width: 40%;
   display: inline-block;
 }
@@ -662,7 +708,7 @@ img.user-image {
 
 /* bottom form for sending a message */
 .message-box{
-  border-top: 1px solid #E9E9E9;
+  border-top: 1px solid $borders;
   display: inline-block;
   width: 100%;
 }
@@ -678,7 +724,7 @@ img.user-image {
   margin-bottom: 28px;
   border-radius: 3px;
   width: 60%;
-  border: 1px solid #E9E9E9;
+  border: 1px solid $borders;
   resize: none;
   height:80px;
   float: left;
@@ -686,31 +732,31 @@ img.user-image {
 }
 
 .chat-input ::-webkit-input-placeholder {
-  font-family: lato;
-  padding: 11px 22px;
+  font-family: $main;
+  padding: $chatInputPadding;
 }
 
 .chat-input :-moz-placeholder { /* older Firefox*/
-  font-family: lato;
-  padding: 11px 22px;
+  font-family: $main;
+  padding: $chatInputPadding;
 }
 
-.chat-input ::-moz-placeholder { /* Firefox 19+ */ fo
-  font-family: lato;
-  padding: 11px 22px;
+.chat-input ::-moz-placeholder { /* Firefox 19+ */ 
+  font-family: $main;
+  padding: $chatInputPadding;
 }
 
 .chat-input :-ms-input-placeholder { 
-  font-family: lato;
-  padding: 11px 22px;
+  font-family: $main;
+  padding: $chatInputPadding;
 }
 
 
 .button-blue{
-  background-color: #5AAFEE;
+  background-color: $color2;
   color: white;
   border-radius: 3px;
-  border: 1px solid #5AAFEE;
+  border: 1px solid $color2;
   padding: 10px 45px;
 }
 
@@ -721,7 +767,7 @@ img.user-image {
 
 .applet-row {
     display: table-row;
-    border-top: 1px solid #E9E9E9;
+    border-top: 1px solid $borders;
 }
 
 .thread-pane.active {
@@ -733,7 +779,7 @@ img.user-image {
 }
 
 .thread-pane.active:hover {
-  background:#5AAFEE;
+  background:$color2;
 }
 
 
@@ -768,18 +814,18 @@ img.user-image {
 }
 
 .applet-column-group h4 {
-    font-family: Lato; 
-    font-weight: 600;
+    font-family: $main; 
+    font-weight: $weight5;
     font-size: 18px; 
-    color: #484848; 
+    color: $color1; 
     line-height: 22px;
     padding: 10px 32px;
 }
 
 .form input, .form button, .form textarea {
-  border: 1px solid #E9E9E9;
+  border: 1px solid $borders;
   border-radius: 4px;
-  font-family: Lato;
+  font-family: $main;
   font-size: 19.76px;
   color: #2B2B2B;
   line-height: 24px;
@@ -798,28 +844,28 @@ img.user-image {
 .login-wrap {
     width: 357px;
     height: 499px;
-    /* border: 1px solid #E9E9E9; */
+    /* border: 1px solid $borders; */
     border-radius: 4px;
     margin: 80px auto;
     overflow: hidden;
 }
 
 .login-header {
-    /* background: #F9F9F9; */
+    /* background: $color4; */
     height: 80px;
-    /* border-bottom: 1px solid #E9E9E9; */
+    /* border-bottom: 1px solid $borders; */
     display: inline-block;
     width: 100%;
 }
 
 .login-header h2 {
     font-size: 19px;
-    font-family: Lato;
-    font-weight: 600;
+    font-family: $main;
+    font-weight: $weight5;
     text-align: center;
     text-transform: uppercase;
     line-height: 80px;
-    color: #6E6E6E;
+    color: $color3;
     margin: 0;
 }
 
@@ -832,8 +878,8 @@ img.user-image {
 }
 
 .login-form button {
-    background: #5AAFEE; 
-    border-color: #5AAFEE;
+    background: $color2; 
+    border-color: $color2;
     color: white;
     border-radius: 4px;
     text-align: center;
@@ -850,7 +896,7 @@ input:focus {
 }
 
 .login-form a {
-  color:#5AAFEE;
+  color:$color2;
 }
 
 .login-form label {
@@ -870,8 +916,8 @@ img.login-icon {
 }
 
 .text-bold {
-  font-family: Lato;
-  font-weight: 600;
+  font-family: $main;
+  font-weight: $weight5;
 }
 
 .text-normal {
@@ -887,11 +933,11 @@ img.login-icon {
 }
 
 .text-primary {
-  color: #484848;
+  color: $color1;
 }
 
 .text-secondary {
-  color: #878787;
+  color: $textSecondary;
 }
 
 
@@ -1003,7 +1049,7 @@ ul.drop-menu li {
     content: "";
     width: 1px;
     height: 34px;
-    background: #E9E9E9;
+    background: $borders;
     position: absolute;
     right: -13px;
     top: -4px;
@@ -1014,12 +1060,12 @@ ul.drop-menu li {
 }
 
 .applet-table tr th {
-    font-family: 'Lato';
+    font-family: $main;
     font-style: italic;
-    font-weight: 400;
+    font-weight: $weight4;
     padding-left: 25px;
     white-space: nowrap;
-    color: #484848;
+    color: $color1;
 }
 
 .applet-table tr td {
@@ -1032,7 +1078,7 @@ ul.drop-menu li {
 }
 
 .applet-table a {
-    color: #5AAFEE;
+    color: $color2;
 }
 
 .applet-table tr td:first-child {
@@ -1043,11 +1089,11 @@ ul.drop-menu li {
 }
 
 .applet-table tbody tr:nth-child(odd) {
-  background: #F9F9F9;
+  background: $color4;
 }
 
 .applet-cell {
-    border-top: 1px solid #E9E9E9;
+    border-top: 1px solid $borders;
     width: 100%;
     min-height: 100%;
 }
@@ -1057,14 +1103,14 @@ ul.drop-menu li {
 }
 
 .applet-table tr {
-  border-bottom: 1px solid #E9E9E9;
+  border-bottom: 1px solid $borders;
 }
 
 
 .equipment-description {
     font-size: 12px;
     line-height: 20px;
-    color: #6E6E6E;
+    color: $color3;
     width: 50%;
     margin: 0 52px;
     margin-bottom: 42px;
@@ -1073,8 +1119,7 @@ ul.drop-menu li {
 .applet-col-header.header-thin  {
     height: 55px;
     line-height: 50px;
-    font-size: 17px; };
-};
+    font-size: 17px;
     line-height: 55px;
 }
 
@@ -1098,7 +1143,7 @@ table.applet-table {
 
 
 .scheduler .applet-col-header i {
-  color: #5AAFEE;
+  color: $color2;
   font-size: 20px;
   vertical-align: middle;
   line-height: 55px;
@@ -1109,17 +1154,17 @@ table.applet-table {
 .scheduler .applet-col-header .scheduler-year,.scheduler .applet-col-header .scheduler-monthday {
     vertical-align: middle;
 
-    font-family: Lato;
+    font-family: $main;
 }
 
 .scheduler .applet-col-header .scheduler-monthday {
-    font-weight: 600;
+    font-weight: $weight5;
 
     padding-left: 15px;
 }
 
 .scheduler .applet-col-header .scheduler-year {      
-    font-weight: 200;
+    font-weight: $weight2;
 
     padding-right: 15px;
 }
@@ -1142,7 +1187,7 @@ table.applet-table {
 
 .day-details .calendar-month-view .week-row .calendar-item:hover, 
 .day-details .calendar-month-view .week-row .calendar-item.active {
-  background: #5AAFEE;
+  background: $color2;
   cursor: pointer;
   color: #FFF;
 }
@@ -1167,7 +1212,7 @@ table.applet-table {
   display: block;
   width: 22px;
   height: 100%;
-  background: #F9F9F9;
+  background: $color4;
   position: absolute;
   z-index: -1;
   top:0;
@@ -1230,7 +1275,7 @@ table.applet-table {
 }
 
 .day-timeline .timeline-day {
-    font-weight: 600;
+    font-weight: $weight5;
     font-size: 9px;
 }
 
@@ -1255,7 +1300,7 @@ table.applet-table {
 .details-day {
     display: inline-block;
     font-size: 96px;
-    font-weight: 100;
+    font-weight: $weight1;
     padding: 0;
     height: 101px;
     margin: 0;
@@ -1274,7 +1319,7 @@ table.applet-table {
 .details-events .event {
     height: 54px;
     position: relative;
-    border-bottom: 1px solid #E9E9E9;
+    border-bottom: 1px solid $borders;
 }
 
 .details-events .event.active:before {
@@ -1284,7 +1329,7 @@ table.applet-table {
     left: -1px;
     top: -1px;
     width: 4px;
-    background:#5AAFEE;
+    background:$color2;
 }
 
 .event-title {
@@ -1292,7 +1337,7 @@ table.applet-table {
     width: calc(100% - 144px);
     padding: 10px 15px;
     display: inline-block;
-    font-weight: 600;
+    font-weight: $weight5;
     height: 100%;
     float: left;
 }
@@ -1360,7 +1405,7 @@ img.profile-large {
     line-height: 24px;
     font-size: 12px;
     color: #9B9B9B;
-    font-weight: 400;
+    font-weight: $weight4;
 }
 
 .user-header .applet-header-list li:after {
@@ -1415,12 +1460,12 @@ tr.permission-group th {
     height: 50px;
     background: #F2F2F2;
     font-size: 18px;
-    font-weight: 600;
+    font-weight: $weight5;
     font-style: normal;
 }
 
 .applet-table.no-head {
-    border-top: 1px solid #E9E9E9;
+    border-top: 1px solid $borders;
 }
 
 
@@ -1433,7 +1478,7 @@ tr.permission-group th {
 .permissions input[type="checkbox"] {
 
     background: #FFFFFF;  
-    border: 1px solid #5AAFEE; 
+    border: 1px solid $color2; 
     border-radius: 4px;
     width: 20px;
     height:20px;
@@ -1456,7 +1501,7 @@ tr.permission-group th {
     position:absolute;
     text-align: center;
     vertical-align: middle;
-    color:#5AAFEE;
+    color:$color2;
     left:-5px;
     top:-5px;
     border-radius:8px;
