@@ -7,45 +7,45 @@
 
 // VARIABLES
 // Fonts
-	// Family / Style
-		$main: 'Lato';
-		$mainBold: Lato-Bold;
-		$mainSerif: 'Lato', sans-serif;
+// Family / Style
+$main: 'Lato';
+$mainBold: Lato-Bold;
+$mainSerif: 'Lato', sans-serif;
 
-	// Weight
-		// .header-icon-desc and .details-day
-			$weight1: 100;
-		// .navbar-brand and scheduler year column
-			$weight2: 200;
-		// font-face only
-			$weight3: 300;
-		// Msg description, applet table, etc.
-			$weight4: 400;
-		// User full name, login header, .text-bold and etc.
-			$weight5: 600;
-		// font-face only
-			$weight6: 700;
+// Weight
+// .header-icon-desc and .details-day
+$weight1: 100;
+// .navbar-brand and scheduler year column
+$weight2: 200;
+// font-face only
+$weight3: 300;
+// Msg description, applet table, etc.
+$weight4: 400;
+// User full name, login header, .text-bold and etc.
+$weight5: 600;
+// font-face only
+$weight6: 700;
 
 // Colors
-	// Primary text and more.
-		$color1: #484848;
-	// Secondary text color
-		$textSecondary: #878787;
-	// Navbar/sidebar BG, project title, login form BG/button and more.
-		$color2: #5AAFEE;
-	// Login header, equipment description
-		$color3: #6E6E6E;
-	// Sidebar list and applet table nth children BG and etc.
-		$color4: #F9F9F9;
-	// Mostly borders (E.g for Navbar/sidebar, messages, applets etc)
-		$borders: #E9E9E9;
+// Primary text and more.
+$color1: #484848;
+// Secondary text color
+$textSecondary: #878787;
+// Navbar/sidebar BG, project title, login form BG/button and more.
+$color2: #5AAFEE;
+// Login header, equipment description
+$color3: #6E6E6E;
+// Sidebar list and applet table nth children BG and etc.
+$color4: #F9F9F9;
+// Mostly borders (E.g for Navbar/sidebar, messages, applets etc)
+$borders: #E9E9E9;
 
 // Paddings
-	$chatInputPadding: 11px 22px;
+$chatInputPadding: 11px 22px;
 
 // Unicode
-	$unicodeRange1: U+0000-00FF, U+0131, U+0152-0153, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2212, U+2215, U+E0FF, U+EFFD, U+F000;
-	$unicodeRange2: U+0100-024F, U+1E00-1EFF, U+20A0-20AB, U+20AD-20CF, U+2C60-2C7F, U+A720-A7FF;
+$unicodeRange1: U+0000-00FF, U+0131, U+0152-0153, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2212, U+2215, U+E0FF, U+EFFD, U+F000;
+$unicodeRange2: U+0100-024F, U+1E00-1EFF, U+20A0-20AB, U+20AD-20CF, U+2C60-2C7F, U+A720-A7FF;
 
 @font-face {
 	font-family: $main;

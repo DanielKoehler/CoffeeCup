@@ -1,0 +1,146 @@
+
+// Styling for all borders
+$borderStyle: 1px solid #E9E9E9;
+
+// Main font-family
+$main: lato-light;
+
+// Message description font size
+$msgFSize: 12px;
+
+// .description, .thread-description, .circular-img height
+$height1: 40px;
+
+// .thread-pane height
+$height2: 80px;
+
+/* column used for main content */
+.applet-col {
+  box-sizing: border-box;
+  display: block;
+  float: left;
+  border-right: $borderStyle;
+  float: left;
+}
+
+/* left and right columns for threads/messages */
+.applet-col-2 {
+  width: 30%;
+}
+
+.applet-col-4 {
+  width: 70%; 
+}
+
+/* main content's heading */
+.applet-header {
+  padding-left:35px;
+  padding-top: 44px;
+  padding-bottom: 39px;
+  border-bottom: $borderStyle;
+
+  h4 {
+    margin: 0px;
+    font-weight: bold;
+  }
+}
+
+/* main content's body */
+.applet-body{
+  padding-left:11.42%;
+}
+
+/* common to thread list & messages */
+.description{
+  display: inline-block;
+  margin:15px 0px;
+  height: $height1;
+  /*position: absolute;*/
+
+  h5{
+    font-weight: bold; 
+    margin-top: 12px;
+    margin-bottom: 5px;
+    display: inline-block;
+  }
+}
+
+/* Thread list */
+.thread-pane{
+  height: $height2;
+}
+
+.thread-snippet{
+  font-family: $mainFont;
+  padding-bottom: 9px;
+  margin-bottom: 0px;
+  border-bottom: $borderStyle;
+}
+
+.thread-description{
+  display: inline-block;
+  margin:15px 0px;
+  height: $height1;
+
+  h5{
+    font-weight: bold; 
+    margin-top: 12px;
+    margin-bottom: 5px;
+    display: inline-block;
+  }
+}
+
+.thread-snippet-time{
+  display: inline-block;
+  font-family: $mainFont;
+  font-style: italic;
+  margin-bottom: 0px;
+  margin-left: 19px;
+
+}
+
+/* messages */
+.messages{
+  max-width: 80%;
+}
+
+.message{
+  margin-bottom: 24px;
+}
+
+.message-description p {
+  max-width: 410px;
+  font-size: $msgFSize;
+  font-family: $mainFont;
+}
+
+.time-stamp{
+  margin-top: 15px;
+  margin-bottom: 15px;
+
+  p {
+    font-family: $mainFont;
+    font-style: italic;
+    display: inline-block;
+    margin-bottom: 0px;
+  }
+}
+
+.line {
+  border-top: $borderStyle;
+  width: 40%;
+  display: inline-block;
+}
+
+
+/* profile image */
+.circular-img{
+  width: 40px;
+  height: $height1;
+  -webkit-border-radius: 20px;
+  -moz-border-radius: 20px;
+  display: inline-block;
+  margin-top: 23px;
+  margin-right: 19px;
+  vertical-align: top;
+}
