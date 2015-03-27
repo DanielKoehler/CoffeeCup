@@ -6,6 +6,8 @@ from django.utils.translation import ugettext_lazy as _
 from django.core.mail import send_mail
 from django.contrib.auth.models import AbstractBaseUser, PermissionsMixin
 
+from django.conf import settings
+
 from django.contrib.auth.models import BaseUserManager
 
 class UserManager(BaseUserManager):
@@ -47,6 +49,8 @@ class User(AbstractBaseUser, PermissionsMixin):
     email = models.EmailField(_('email address'), max_length=254, unique=True)
     first_name = models.CharField(_('first name'), max_length=30, blank=True)
     last_name = models.CharField(_('last name'), max_length=30, blank=True)
+    image = models.ImageField(upload_to='./profiles/')
+
 
     role = models.CharField(_('user role'), max_length=30, blank=True)
 
@@ -88,7 +92,20 @@ class User(AbstractBaseUser, PermissionsMixin):
         """
         send_mail(subject, message, from_email, [self.email])
 
+    @property
+    def get_avatar(self):
+        if self.image and hasattr(self.image, 'url'):
+            return self.image.url
+        return "%sprofiles/default-avatar.png" % settings.MEDIA_URL
 
+
+class Project(models.Model):
+
+    title = models.CharField(max_length=100)
+    description = models.TextField(max_length=1024)
+    users = models.ManyToManyField(User)
+    created = models.DateTimeField(auto_now_add=True)
+    image = models.ImageField(upload_to='./project/profiles/')
 
 
 

@@ -1,2 +1,3 @@
 django-simple-menu==1.0.9
 django-apptemplates==0.0.1
+django-sockjs-tornado>=0.0.1

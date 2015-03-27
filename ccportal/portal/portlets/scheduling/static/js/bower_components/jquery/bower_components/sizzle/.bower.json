@@ -1,0 +1,36 @@
+{
+  "name": "sizzle",
+  "version": "2.1.1-jquery.2.1.2",
+  "main": "./dist/sizzle.js",
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "package.json",
+    "bower.json",
+    "speed",
+    "Makefile",
+    "*.md",
+    "*.txt",
+    "!LICENSE.txt",
+    "src",
+    "test",
+    "Gruntfile.js"
+  ],
+  "keywords": [
+    "sizzle",
+    "javascript",
+    "CSS",
+    "selector",
+    "jquery"
+  ],
+  "homepage": "https://github.com/jquery/sizzle",
+  "_release": "2.1.1-jquery.2.1.2",
+  "_resolution": {
+    "type": "version",
+    "tag": "2.1.1-jquery.2.1.2",
+    "commit": "2280ab78b0e19dc494f9c47fd1f4a42dd63c280d"
+  },
+  "_source": "git://github.com/jquery/sizzle.git",
+  "_target": "2.1.1-jquery.2.1.2",
+  "_originalSource": "sizzle"
+}

@@ -10,8 +10,10 @@ https://docs.djangoproject.com/en/1.6/ref/settings/
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 import os
+import sys
 BASE_DIR = os.path.dirname(os.path.dirname(__file__))
 
+sys.path.append(os.path.join(BASE_DIR, 'portal/portlets'))
  
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/1.6/howto/deployment/checklist/
@@ -31,6 +33,8 @@ ALLOWED_HOSTS = ['localhost', '178.62.46.211']
 
 INSTALLED_APPS = (
     
+    'menu',
+    'django_sockjs_tornado',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -38,12 +42,10 @@ INSTALLED_APPS = (
     'django.contrib.messages',
     'django.contrib.staticfiles',
 
-    'menu',
+    
     # Coffee Cup Apps
-
     'portal',
     'portal.site',
-                  
     'portal.portlets.dashboard',
     'portal.portlets.equipmentmanager',
     'portal.portlets.investorbulletin',
@@ -100,6 +102,14 @@ DATABASES = {
     }
 }
 
+
+SOCKJS_PORT = 9999
+SOCKJS_CHANNEL = 'messenger'
+
+SOCKJS_CLASSES = (
+    'portal.portlets.messenger.sock.MessengerConnection',
+)
+
 # Internationalization
 # https://docs.djangoproject.com/en/1.6/topics/i18n/
 
@@ -117,10 +127,14 @@ MENU_SELECT_PARENTS = True
 
 AUTH_USER_MODEL = 'site.User'
 
+SITE_NAME = "coffeecup"
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/1.6/howto/static-files/
 
 STATIC_URL = '/static/'
 STATIC_ROOT = "./sitestatic/"
+
+MEDIA_ROOT = './sitemedia/'
+MEDIA_URL = '/media/'
 

@@ -29,5 +29,5 @@ from models import Location, Photo
     # ordering = ('email',)
 
 admin.site.register(Location)
-# admin.site.register(Photo)
+admin.site.register(Photo)
 

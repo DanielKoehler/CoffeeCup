@@ -1,0 +1,1 @@
+var cal = angular.module('calendar', [])

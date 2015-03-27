@@ -1,0 +1,20 @@
+{
+  "name": "angular-sockjs",
+  "version": "0.0.1",
+  "main": "socket.js",
+  "directories": {
+    "test": "test"
+  },
+  "scripts": {
+    "test": "./node_modules/.bin/karma start --browsers Firefox --single-run"
+  },
+  "author": "Ben Drucker",
+  "license": "MIT",
+  "devDependencies": {
+    "karma": "~0.10.2",
+    "karma-chai": "0.0.2",
+    "mocha": "~1.17.1",
+    "karma-mocha": "~0.1.1",
+    "karma-sinon": "~1.0.0"
+  }
+}

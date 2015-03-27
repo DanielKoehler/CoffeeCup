@@ -2,7 +2,7 @@
 
 {% load static from staticfiles %}
 
-{% block content_main %}
+{% block main_content %}
 
 <div class="content-span-header">
   <h1>User Administration</h1>
@@ -44,7 +44,7 @@
         <img src="{% static 'images/dan_avtr.png' %}" class="circular-img">
         <div class="description">
           <h5>Daniel Koehler (Me)</h5>
-          <p class="thread-snippet">Billionaire Playboy Philanthropist</p>
+          <p class="thread-snippet">Web Admin</p>
         </div>
       </div>
 
@@ -136,14 +136,7 @@
             </tr>
             <tr>
                <td></td>
-               <td><input type="checkbox"/> Upload Media</td>
-               <td>53 minutes ago</td>
-               <td><a href="">Daniel Koehler</a></td>
-               <td class="wrap text-secondary">Allows user to upload and sematically descibe media on Coffee Stream.  </td>
-            </tr>
-            <tr>
-               <td></td>
-               <td><input type="checkbox"/> Upload Media</td>
+               <td><input type="checkbox"/> Edit pages</td>
                <td>53 minutes ago</td>
                <td><a href="">Daniel Koehler</a></td>
                <td class="wrap text-secondary">Allows user to upload and sematically descibe media on Coffee Stream.  </td>
@@ -152,13 +145,21 @@
             <tr class="permission-group">
               <th colspan="5"><input type="checkbox" class="orange"/><span class="group-title">CoffeeStream</span></th>
             </tr>
-            <tr>
+                        <tr>
                <td></td>
                <td><input type="checkbox"/> Upload Media</td>
                <td>53 minutes ago</td>
                <td><a href="">Daniel Koehler</a></td>
                <td class="wrap text-secondary">Allows user to upload and sematically descibe media on Coffee Stream.  </td>
             </tr>
+            <tr>
+               <td></td>
+               <td><input type="checkbox"/> Delete Media</td>
+               <td>53 minutes ago</td>
+               <td><a href="">Daniel Koehler</a></td>
+               <td class="wrap text-secondary">Allows user to upload and sematically descibe media on Coffee Stream.  </td>
+            </tr>
+
 
          </tbody>
       </table>

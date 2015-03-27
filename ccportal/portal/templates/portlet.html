@@ -62,11 +62,14 @@
     </ul>
   </div> <!-- end sidebar -->
 
-  <div class="content main">
+  {% block main %} 
 
-      {% block content_main %} 
-      {% endblock %}
+    <div class="content main" >
 
-  </div>
+        {% block main_content %} 
+        {% endblock %}
 
+    </div>
+  {% endblock %}
+  
 {% endblock %}

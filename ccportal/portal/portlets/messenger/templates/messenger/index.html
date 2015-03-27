@@ -1,92 +1,166 @@
 {% extends "portal:portlet.html" %}
-
 {% load static from staticfiles %}
 
-{% block content_main %}
 
-<div class="content-span-header">
-  <h1>Messenger</h1>
-</div>
-<div class="applet-row">
-  <!-- list of threads/conversations-->
-  <div class="applet-col applet-col-2">
-    <div class="applet-header">
-      <h4>
-        Threads 
-        <a href=""><span class="header-icon-desc">new</span><span class="icon ion-ios-plus-outline"></span></a>
-      </h4>
-    </div>
+{% block head %}
+  <script type="text/javascript" src="{% static 'js/angular.min.js' %}"></script>
+  <script src="{% static 'js/sockjs.min.js' %}"></script>
+  <script type="text/javascript" src="{% static 'js/app.js' %}"></script>
+{% endblock %}
 
-    <div class="applet-body">
-      <!-- thread -->
-      <div class="thread-pane active">
-        <img src="{% static 'images/rob_avtr.png' %}" class="circular-img">
-        <div class="description">
-          <h5>Rob Johnson</h5>
-          <p class="thread-snippet-time right">25 minutes ago.</p>
-          <p class="thread-snippet">Lorem ipsum dolor sit amet</p>
-        </div>
-      </div>
-      <div class="thread-pane">
-        <img src="{% static 'images/ryan_avtr.png' %}" class="circular-img">
-        <div class="description">
-          <h5>Ryan Day</h5>
-          <p class="thread-snippet-time right">25 minutes ago.</p>
-          <p class="thread-snippet">Lorem ipsum dolor sit amet</p>
-        </div>
-      </div>
-      <div class="thread-pane">
-        <img src="{% static 'images/chris_avtr.png' %}" class="circular-img">
-        <div class="description">
-          <h5>Chris Smale</h5>
-          <p class="thread-snippet-time right">25 minutes ago.</p>
-          <p class="thread-snippet">Lorem ipsum dolor sit amet</p>
-        </div>
-      </div>
-      <!-- thread 2 etc... -->
-    </div>
+{% block main %}
+<div class="content main" ng-app="messenger" ng-controller="MessengerCtrl">
+  <div class="content-span-header">
+    <h1>Messenger</h1>
   </div>
-  <!-- chat window -->
-  <div class="applet-col applet-col-4">
-    <div class="applet-header">
-      <h4>Rob Johnson
-      <a href="" class="applet-icon icon-blue ion-ios-videocam-outline"></a>
-      <a href="" class="applet-icon icon-red ion-ios-telephone-outline"></a></h4>
+  <div class="applet-row">
+    <!-- list of threads/conversations-->
+    <div class="applet-col applet-col-2">
+      <div class="applet-header">
+        <h4>
+          Threads 
+          <a href=""><span class="header-icon-desc">new</span><span class="icon ion-ios-plus-outline"></span></a>
+        </h4>
+      </div>
+
+      <div class="applet-body">
+        <!-- thread -->
+        {% verbatim %}
+  
+          <div ng-repeat="thread in threads" class="thread-pane {{ thread.id == active_thread ? 'active' : null}}">
+            <img ng-src="{{ thread.users[0].avatar }}" class="circular-img">
+            <div class="description">
+              <h5>{{thread.users[0].full_name}}</h5>
+              <p class="thread-snippet-time right">{{thread.last_message}}</p>
+
+                <!-- <p class="thread-snippet" ng-show="if thread.messages.length > 0">{{thread.messages[0].text}}</p> -->
+                <p class="thread-snippet"></p>
+
+            </div>
+          </div>
+
+        {% endverbatim %}
+        <!-- thread 2 etc... -->
+      </div>
     </div>
-    <div class="applet-body">
-      <div class="messages">
-        <!-- time stamp -->
-        <div class="time-stamp">
-          <div class="line"></div>
-          <p>1 hour ago</p>
-          <div class="line"></div>
-        </div>
-        <!-- message -->
-        <div class="message">
-          <img src="{% static 'images/rob_avtr.png' %}" class="circular-img">
-          <div class="description message-description">
-            <h5>Chris Smale</h5>
-            <p>Orci ipsum egestas :)</p>
-          </div>
-        </div>
-        <!-- message -->
-        <div class="message">
-          <img src="{% static 'images/chris_avtr.png' %}" class="circular-img">
-          <div class="description message-description">
-            <h5>Chris Smale</h5>
-            <p>Malesuada quis montes. Egestas dignissim eu. Faucibus morbi quis. Quam et nulla pretium luctus nulla vestibulum vestibulum ut. Orci ipsum egestas. Quis id dui. Lorem vel non diam netus massa et sociis mi fugiat commodo orci est aut mattis. Aliquam libero enim proin integer diam sit purus sed. Wisi risus donec eleifend quisque sed. Maecenas penatibus phasellus. Et elit enim sed iaculis ut eget scelerisque mi. Integer imperdiet arcu.  </p>
-          </div>
-        </div>
-      </div>
-      <!--  enter message -->
-      <div class="message-box">
-        <form>
-            <textarea class="chat-input" placeholder="Write your message..."></textarea>
-            <button class="button-blue chat-button">Send</button>
-        </form>
-      </div>
+
+
+    <!-- chat window -->
+    <div class="applet-col applet-col-4">
+      <div class="applet-header">
       
+      {% verbatim %}
+
+          <h4>{{ active_thread != null ?  threads[active_thread].user.full_name : "No threads"}}
+          <a href="" class="applet-icon icon-blue ion-ios-videocam-outline {{ active_thread == null ? 'disabled' : null }}"></a>
+          <a href="" class="applet-icon icon-red ion-ios-telephone-outline {{ active_thread == null ? 'disabled' : null }}"></a></h4>
+
+      {% endverbatim %}
+      </div>
+      <div class="applet-body">
+        <div class="messages">
+          {% verbatim %}
+            <!-- message -->
+            <div ng-repeat="message in threads[active_thread].messages" class="message">
+
+              <img ng-src="{{ message.user.avatar }}" class="circular-img">
+              <div class="description message-description">
+                <h5>{{message.user.full_name}}</h5>
+                <p>{{message.text}}</p>
+              </div>  
+
+            </div>
+    
+          {% endverbatim %}
+        </div>
+        <!--  enter message -->
+        <div class="message-box">
+          <form ng-submit="addMessage()">
+              <textarea class="chat-input" id="message"  ng-model="message" placeholder="Write your message..."></textarea>
+              <button class="button-blue chat-button">Send</button>
+          </form>
+        </div>
+        
+      </div>
     </div>
   </div>
-</div>
+{% endblock %}
+
+{% block scripts %}
+
+
+<script type="text/javascript" src="{% static 'js/sockjs.min.js' %}"></script>
+<script type="text/javascript" src="{% static 'js/bower_components/angular-sockjs/socket.js' %}"></script>
+
+<script>
+
+  // sock = new SockJS('http://localhost:9999/echo');
+
+  // sock.onmessage = function(e) {
+  //   console.log(e.data);
+  // };
+
+  // sock.onclose = function() {
+  //   console.log('closed :(');
+  // };
+
+  // sock.onopen = function() {
+  //   console.log('opened :>');
+    
+  // };
+
+  // function send() {
+  //   // silly, but you get the idea
+  //   sock.send(JSON.stringify({
+  //     name: $('#name').text(),
+  //     message: $('input').val()
+  //   }));
+  // }
+
+  // var stopTyping;
+  // // <--------- EMITTED EVENTS ---------> //
+  // // send message 
+  // $('form').submit(function(){
+  //   var message = $('#m').val();
+  //   socket.emit('message', message);
+  //   $('#messages').append($('<div class="message"><img src="{% static "images/rob_avtr.png" %}" class="circular-img"><div class="description message-description"><h5>Chris Smale</h5><p>' + message + '</p></div></div>'));
+  //   $('#m').val('');
+  //   return false;
+  // });
+  // // <--------- RECEIVED EVENTS --------> //
+  // // message received...
+  // socket.on('message', function(msg){
+  //   $('#messages').append($('<div class="message"><img src="{% static "images/rob_avtr.png" %}" class="circular-img"><div class="description message-description"><h5>Chris Smale</h5><p>' + msg + '</p></div></div>'));
+  // });
+
+  // // user is typing...
+  // sock.onmessage = function(e) {
+  //   console.log(e.data);
+  // };
+
+  // socket.on('typing', function(user){
+  //   if(user.status == 1){
+  //     console.log(user.id + " is typing");
+  //     $('#status').append().text(user.id + " is typing...");
+  //   }
+  //   else{
+  //     console.log(user.id + " is not typing");
+  //     $('#status').append().text("");
+  //   }
+  // });
+  // // <--------- HELPER EVENTS ----------> //
+  // // User is typing
+  // $('#m').keypress(function(){
+  //   clearTimeout(stopTyping);
+  //   socket.emit('typing', 1);
+  // });
+  // // user has stopped typing
+  // $('#m').keyup(function(){
+  //   stopTyping = setTimeout(function(){
+  //     socket.emit('typing', 0);
+  //   }, 500);
+  // });
+</script>
+
+
 {% endblock %}

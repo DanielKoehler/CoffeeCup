@@ -18,10 +18,10 @@
       <div class="navbar-user-info navbar-right">
 
             <div class="user-info">
-              <span class="user-fullname">{{ request.user.first_name }} {{ request.user.last_name }}</span>
+              <span class="user-fullname">{{ request.user.get_full_name }}</span>
               <span class="user-description">{{ request.user.role }}</span> 
             </div>
-            <img class="user-image" src="{% static 'images/dan_avtr.png' %}" alt="{{ request.user.username }}">
+            <img class="user-image" src="{{ request.user.get_avatar }}" alt="{{ request.user.username }}">
 
             <div class="user-menu">
               <a class="ion-ios-arrow-down user-options-button"></a>
