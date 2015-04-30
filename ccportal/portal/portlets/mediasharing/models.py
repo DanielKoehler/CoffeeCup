@@ -1,48 +1,85 @@
 from django.db import models
+from django.conf import settings
+import datetime
 
-##
-# Applet Data
-##
-  
-# class Share(models.Model): 
-#     id = models.IntegerField(primary_key=True, unique=True)
-#     file = models.ForeignKey('File', to_field='id')
-#     directory = models.ForeignKey('Directory', to_field='id')
-#     permalinkHash = models.CharField(max_length=255)
-#     date = models.CharField(max_length=255)
-  
-# class Directory(models.Model): 
-#     id = models.IntegerField(primary_key=True)
-#     name = models.CharField(max_length=255)
-#     parent = models.ForeignKey('Directory', to_field='id')
-#     owner = models.ForeignKey('User', to_field='id')
+class Directory(models.Model):
 
-# class FileReference(models.Model): 
-#     id = models.IntegerField(primary_key=True, unique=True)
-#     name = models.CharField(max_length=255)
-#     resourceHash = models.CharField(max_length=255)
-#     hostRootPath = models.CharField(max_length=255)
-#     networkHost = models.CharField(max_length=255)
+    name = models.CharField(max_length=100)       
+    created = models.DateTimeField()
+    modified = models.DateTimeField()
+    parent = models.ForeignKey("self", null=True, blank=True)
+    owner = models.ForeignKey(settings.AUTH_USER_MODEL)
+    bytes = models.IntegerField() #
 
-  
-# class File(models.Model): 
-#     id = models.IntegerField(primary_key=True, unique=True)
-#     name = models.CharField(max_length=255)
-#     mimeType = models.CharField(max_length=255)
-#     parent = models.ForeignKey('Directory', to_field='id')
-#     locationReference = models.ForeignKey('FileReference', to_field='id')
+    def __unicode__( self ):
+        return " %s " % (self.name )
 
-# ##
-# # Ownership 
-# ##
+    def save(self, *args, **kwargs):
+        ''' On save, update timestamps '''
+        if not self.id:
+            self.created = datetime.datetime.today()
+        self.modified = datetime.datetime.today()
+        return super(Directory, self).save(*args, **kwargs)
 
-# class DirectoryUserGroup(models.Model): 
-#     did = models.ForeignKey('Directory', to_field='id')
-#     uid = models.ForeignKey('User', to_field='id')
-#     shared = models.DateTimeField()
- 
-  
-# class DirectoryUser(models.Model): 
-#     did = models.ForeignKey('Directory', to_field='id')
-#     ugid = models.ForeignKey('UserGroup', to_field='id')
-#     shared = models.DateTimeField()
+    def get_client_inode(self, file_set=True):
+        
+        data = { 
+            'id':"d%s" % self.id,
+            'name': self.name,
+            'parent': self.parent,
+            'bytes': self.bytes,
+            'isDirectory': True,
+            'created': self.created,
+            'modified': self.modified,
+        }
+
+        if file_set:
+            data['files'] = self.children()
+
+        return data
+
+    def children(self):
+
+        files = File.objects.filter(parent=self)
+        directories = Directory.objects.filter(parent=self)
+
+        return [x.get_client_inode(file_set=False) for x in files or directories]
+
+
+class File(models.Model):
+
+    name = models.CharField(max_length=100, null=True, blank=True)       
+    file = models.FileField(upload_to='./mediasharing/userdata/', null=True, blank=True)
+    owner = models.ForeignKey(settings.AUTH_USER_MODEL)
+    parent = models.ForeignKey(Directory, null=True, blank=True)
+    created = models.DateTimeField()
+    modified = models.DateTimeField()
+    bytes = models.IntegerField(default=0)
+    mime = models.CharField(max_length=64, null=True, blank=True)
+
+    def __unicode__( self ):
+        return "(%s)" % ( self.name )
+
+    def save(self, *args, **kwargs):
+        ''' On save, update timestamps '''
+        if not self.id:
+            self.created = datetime.datetime.today()
+        self.modified = datetime.datetime.today()
+        return super(File, self).save(*args, **kwargs)
+
+    def get_client_inode(self, file_set=True):
+        
+        data = { 
+            'id': "f%s" % self.id,
+            'name': self.name,
+            'parent': self.parent,
+            'bytes': self.file.size,
+            'isDirectory': False,
+            'created': self.created,
+            'modified': self.modified,
+        }
+
+        return data
+
+
+

@@ -333,6 +333,7 @@ img.user-image {
     border-radius: 50%;
     display: inline-block;
     vertical-align: top;
+    background: white;
 }
 
 .navbar-user-info {
@@ -469,6 +470,7 @@ img.user-image {
   border-bottom: 1px solid #E9E9E9;
   padding-right: 30px;
   height: 112px;
+  max-height: 112px;
   box-sizing: border-box;
   display: inline-block;
   width: 100%;
@@ -479,10 +481,9 @@ img.user-image {
   margin: 0px;
   font-weight: bold;
   display: inline-block;
-  overflow: hidden;
   height: 112px;
   width:100%;
-  line-height: 112px;
+  line-height: 105px;
 }
 
 .applet-header a{
@@ -580,6 +581,8 @@ img.user-image {
 .messages{
   padding: 0px 9.75%;
   min-height: 100px;
+  max-height: 300px;
+  overflow: scroll;
 }
 
 .message {
@@ -1560,4 +1563,45 @@ a.applet-icon.disabled {
     background:  #ddd;
     border-color: #ddd;
     box-shadow: none;
+}
+
+.mediasharing-menu li {
+    list-style: none;
+    display: inline-block;
+    width: 60px;
+    font-size: 20px;
+    padding: 7px;
+    position:relative;
+    text-align:center;
+    height: 45px;
+}
+
+.mediasharing-menu li span:hover {
+  cursor:pointer;
+}
+
+.mediasharing-menu li span.description {
+    font-size: 8px;
+    position:absolute;
+    text-align:center;
+    font-weight:200;
+    top: 33px;
+    width: 100%;
+    left: 0;
+}
+
+.no-border {
+  border:none;
+}
+
+.applet-menu.mediasharing-menu {
+    border-bottom: 1px solid #e9e9e9;
+}
+
+
+
+
+
+angucomplete input {
+    width: 200px !important;
 }

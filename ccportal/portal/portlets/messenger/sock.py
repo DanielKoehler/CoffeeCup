@@ -40,11 +40,23 @@ class MessengerConnection(SockJSConnection):
                 'data': self._package_thread(thread, messages)
                 })
 
-
-
     def on_message(self, data):
-
+        
         data = json.loads(data)
+
+        if 'event' not in data:
+            return
+
+        options = {
+            'addMessage' : self.addMessage,
+            'addThread' : self.addThread,
+        }
+
+        return options[data['event']](data)
+
+
+
+    def addMessage(self, data):
 
         if 'message' not in data:
             return
@@ -69,6 +81,30 @@ class MessengerConnection(SockJSConnection):
             'data':self._package_message(msg)
             })
 
+    def addThread(self, data):
+
+        if 'users' not in data:
+            return
+
+        data['users'].append(self.user.id)
+
+  
+
+        users = User.objects.filter(id__in=data['users'])
+            
+        t = Thread.objects.create(active=True)
+
+        print t
+
+        for user in users:
+            t.users.add(user)
+
+        return self.broadcast(self._connected, {
+            'route':'thread',
+            'data':self._package_thread(t)
+            })
+
+
     def on_close(self):
         self._connected.remove(self)
 
@@ -78,7 +114,7 @@ class MessengerConnection(SockJSConnection):
                 'first_name': user.first_name, 
                 'last_name': user.last_name,
                 'full_name': user.get_full_name(),
-                'avatar': user.get_avatar(), #MAKE DYNAMIC IN USER MODEL.
+                'avatar': user.get_avatar, #MAKE DYNAMIC IN USER MODEL.
                 'email':user.email
                 }
 

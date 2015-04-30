@@ -5,7 +5,12 @@
 {% block head %}
   <script type="text/javascript" src="{% static 'js/angular.min.js' %}"></script>
   <script src="{% static 'js/sockjs.min.js' %}"></script>
-  <script type="text/javascript" src="{% static 'js/app.js' %}"></script>
+  <script type="text/javascript" src="{% static 'js/messenger.js' %}"></script>
+  <script type="text/javascript" src="{% static 'js/directives/angucomplete.js' %}"></script>
+
+  <!-- <link rel="stylesheet" href="{% static 'css/structure.css' %}"/> -->
+  <link rel="stylesheet" href="{% static 'css/angucomplete.css' %}"/>
+
 {% endblock %}
 
 {% block main %}
@@ -19,7 +24,7 @@
       <div class="applet-header">
         <h4>
           Threads 
-          <a href=""><span class="header-icon-desc">new</span><span class="icon ion-ios-plus-outline"></span></a>
+          <a href=""><span class="header-icon-desc" ng-click="active_thread = null">new</span><span class="icon ion-ios-plus-outline"></span></a>
         </h4>
       </div>
 
@@ -27,14 +32,14 @@
         <!-- thread -->
         {% verbatim %}
   
-          <div ng-repeat="thread in threads" class="thread-pane {{ thread.id == active_thread ? 'active' : null}}">
+          <div ng-repeat="thread in threads" ng-click="selectThread(thread.id)" class="thread-pane {{ thread.id == active_thread ? 'active' : null}}">
             <img ng-src="{{ thread.users[0].avatar }}" class="circular-img">
             <div class="description">
               <h5>{{thread.users[0].full_name}}</h5>
               <p class="thread-snippet-time right">{{thread.last_message}}</p>
 
-                <!-- <p class="thread-snippet" ng-show="if thread.messages.length > 0">{{thread.messages[0].text}}</p> -->
-                <p class="thread-snippet"></p>
+                <p class="thread-snippet" ng-show="thread.messages.length > 0">{{thread.messages[thread.messages.length-1].text}}</p>
+                <p class="thread-snippet" ng-hide="thread.messages.length > 0">No Messages</p>
 
             </div>
           </div>
@@ -51,9 +56,15 @@
       
       {% verbatim %}
 
-          <h4>{{ active_thread != null ?  threads[active_thread].user.full_name : "No threads"}}
+          <h4> 
+
+          <span ng-show="active_thread != null"> {{ threads[active_thread].users[0].full_name }}</span>
+
+          <angucomplete ng-show="active_thread == null" id="ex2" placeholder="Add people to new thread" pause="300" selectedobject="selectedPerson" localdata="people" searchfields="firstName,surname" titlefield="firstName,lastName" descriptionfield="email" imagefield="avatar" minlength="1" ng-model="selectedPersonFeildValue" inputclass="form-control form-control-small" matchclass="highlight" />
+
           <a href="" class="applet-icon icon-blue ion-ios-videocam-outline {{ active_thread == null ? 'disabled' : null }}"></a>
           <a href="" class="applet-icon icon-red ion-ios-telephone-outline {{ active_thread == null ? 'disabled' : null }}"></a></h4>
+
 
       {% endverbatim %}
       </div>

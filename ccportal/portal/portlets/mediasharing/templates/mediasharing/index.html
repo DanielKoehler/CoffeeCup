@@ -2,45 +2,116 @@
 
 {% load static from staticfiles %}
 
-{% block main_content %}
+{% block head %}
 
-<div class="content-span-header">
-  <h1>Media Sharing</h1>
-</div>
-<div class="applet-row">
-  <!-- list of threads/conversations-->
-  <div class="applet-col applet-col-6">
+  <link rel="stylesheet" type="text/css" href="{% static 'css/ngDialog.min.css' %}">
+  <link rel="stylesheet" type="text/css" href="{% static 'css/ngDialog-theme-default.min.css' %}">
 
-    <div class="applet-body">
-      <!-- thread -->
+  <script type="text/javascript" src="{% static 'js/angular.min.js' %}"></script>
+  <script type="text/javascript" src="{% static 'js/ngDialog.min.js' %}"></script>
+  <script type="text/javascript" src="{% static 'js/ng-file-upload.min.js' %}"></script>
+  <script type="text/javascript" src="{% static 'js/angular-cookies.js' %}"></script>
+  <script type="text/javascript" src="{% static 'js/media.js' %}"></script>
 
-    <form>
 
-      <table class="applet-table">
-         <thead class="indented">
-          <tr>
-             <th><input type="checkbox"></th>
-             <th></th>
-             <th>Name</th>
-             <th>Size</th>
-             <th>Last Modified</th>
-          </tr>
-         </thead>
-         <tbody>
-          <tr>
-             <td class="text-large"><input type="checkbox"/></td>
-             <td><span class="file-type ion-ios-copy-outline"></span></td>
-             <td>File 1.ogg.bak</td>
-             <td>1.2Mb</td>
-             <td>53 minutes ago</td>
-          </tr>
-         </tbody>
-      </table>
-    
-    </form>
+
+{% endblock %}
+
+{% block main %}
+
+<div class="content main" ng-app="mediasharing" ng-controller="MediaSharingCtrl">
+  <div class="content-span-header">
+    <h1>Media Sharing</h1>
+  </div>
+  <div ngf-drop ng-model="files" ngf-drag-over-class="dragover" class="drop-box applet-row">
+    <!-- list of threads/conversations-->
+    <div class="applet-col applet-col-6">
+
+      <script type="text/ng-template" id="uploadForm">
+        <h1>Upload File</h1>
+        <form>
+          <input type="file">
+          <input type="submit">
+        </form>
+      </script>  
+
+      <script type="text/ng-template" id="newDirectoryForm">
+        <h1>Add Directory</h1>
+        <form>
+          <input type="text" placeholder="Directory Name">
+          <input type="submit">
+        </form>
+      </script>
+
+      <div class="applet-menu mediasharing-menu">
+
+        <ul>
+          <li ng-click="addFile()"><span class="ion-ios-cloud-upload-outline"></span><span class="description">upload</span></li>
+          <li ng-click="addDirectory()"><span class="ion-ios-folder-outline"></span><span class="description">new directory</span></li>
+          <li><span class="ion-ios-upload-outline"></span><span class="description">share</span></li>
+          <li><span class="ion-ios-loop"></span><span class="description">convert</span></li>
+          <li ng-click="deleteSelected()"><span class="ion-ios-trash-outline"></span><span class="description">delete</span></li>
+        </ul>
+      
+      </div>
+
+      <div class="applet-body">
+        <!-- thread -->
+      <form>
+
+        <table class="applet-table">
+           <thead class="indented">
+            <tr>
+               <th><input ng-click="checkAll()" type="checkbox"></th>
+               <th ng-click="predicate = 'isDirectory'; reverse=!reverse"></th>
+               <th ng-click="predicate = 'name'; reverse=!reverse">Name</th>
+               <th ng-click="predicate = 'bytes'; reverse=!reverse">Size (Bytes)</th>
+               <th ng-click="predicate = 'modified'; reverse=!reverse">Last Modified</th>
+            </tr>
+           </thead>
+           <tbody>
+
+           {% verbatim %}
+            
+            <tr ng-repeat="file in directory.files|orderBy:predicate:reverse" title="Double click to edit rows.">
+
+               <td class="text-large"><input type="checkbox" ng-model="checkObjectModel[file.id]" /></td>
+                
+                <td ng-if="file.isDirectory">
+                    <span class="file-type"></span><!-- code to render a directory-->
+                </td>
+                <td ng-if="!file.isDirectory">
+                   <span class="file-type"></span><!-- code to render the regular file -->
+                </td>
+
+               <td>
+                <div ng-hide="editing == file.id" ng-dblclick="modify(file.id)">
+                  <a ng-show="!file.isDirectory" href="/mediasharing/object/serve/{{file.id}}">{{ file.name }}</a>
+                  <span ng-show="file.isDirectory">{{ file.name }}</span>
+                </div>
+                <div ng-show="editing == file.id" ng-enter="updateObject(file)"><input type="text" ng-model="file.name" /></div>
+               </td>
+
+               <td>{{file.bytes}}</td>
+               <td>{{file.modified}}</td>
+
+            </tr>
+
+            {% endverbatim %}
+
+            <td colspan="5" ng-if="!directory.files" class="text-centre">There doesn't seem to be anything here... <br> Drag and drop files anywhere on this page or click upload.</td>
+
+           </tbody>
+        </table>
+      
+      </form>
+
+      </div>
 
     </div>
-
   </div>
 </div>
+
+
+
 {% endblock %}

@@ -98,6 +98,17 @@ class User(AbstractBaseUser, PermissionsMixin):
             return self.image.url
         return "%sprofiles/default-avatar.png" % settings.MEDIA_URL
 
+    def as_json(self):
+
+        return dict(
+                id = self.id,
+                firstName = self.first_name,
+                lastName = self.last_name, 
+                email = self.email, 
+                avatar = self.get_avatar
+            )   
+
+
 
 class Project(models.Model):
 

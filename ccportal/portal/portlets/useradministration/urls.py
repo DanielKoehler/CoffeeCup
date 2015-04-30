@@ -1,6 +1,6 @@
 from django.conf.urls import patterns, url
 
-import views
+import views, endpoints
 
 urlpatterns = patterns('',
     # ex: /thread/
@@ -10,4 +10,9 @@ urlpatterns = patterns('',
     url(r'^groups/$', views.groups, name='users'),
     # ex: /thread/5/vote/
     # url(r'^(?P< thead_id >\d+)/delete/$', delete, name='delete'),
+
+        # Root path: / 
+    url(r'users/get/$', endpoints.user_list),
+
+
 )

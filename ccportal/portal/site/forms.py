@@ -34,3 +34,6 @@ class UserChangeForm(UserChangeForm):
 class LoginForm(forms.Form):
     email = forms.CharField(max_length=254, widget=forms.TextInput(attrs={'placeholder': 'Email Address'}))
     password = forms.CharField(max_length=254, widget=forms.PasswordInput(attrs={'placeholder': 'Password'}))
+
+
+    
