@@ -38,7 +38,7 @@
           <input type="text" placeholder="Directory Name">
           <input type="submit">
         </form>
-      </script>
+      </script><script type="text/javascript" src="{% static 'js/angular-cookies.js' %}"></script>
 
       <div class="applet-menu mediasharing-menu">
 
@@ -75,10 +75,10 @@
                <td class="text-large"><input type="checkbox" ng-model="checkObjectModel[file.id]" /></td>
                 
                 <td ng-if="file.isDirectory">
-                    <span class="file-type"></span><!-- code to render a directory-->
+                    <span class="file-type ion-ios-folder-outline"></span><!-- code to render a directory-->
                 </td>
                 <td ng-if="!file.isDirectory">
-                   <span class="file-type"></span><!-- code to render the regular file -->
+                   <span class="file-type ion-ios-list-outline"></span><!-- code to render the regular file -->
                 </td>
 
                <td>
