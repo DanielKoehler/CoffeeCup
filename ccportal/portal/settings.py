@@ -34,7 +34,7 @@ ALLOWED_HOSTS = ['localhost', '178.62.46.211']
 INSTALLED_APPS = (
     
     'menu',
-    #'django_sockjs_tornado',
+    'django_sockjs_tornado',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -52,7 +52,7 @@ INSTALLED_APPS = (
     'portal.portlets.investorbulletin',
     'portal.portlets.locationmanager',
     'portal.portlets.mediasharing',
-    #'portal.portlets.messenger',
+    'portal.portlets.messenger',
     'portal.portlets.scheduling',
     'portal.portlets.useradministration',
     'social.apps.django_app.context_processors.backends',
