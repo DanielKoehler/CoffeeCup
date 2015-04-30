@@ -264,7 +264,11 @@ mediasharing.controller('MediaSharingCtrl', function($scope, $http, ngDialog, ha
                   console.log('progress: ' + progressPercentage + '% ' + evt.config.file.name);
 
               }).success(function (data, status, headers, config) {
-                  console.log('file ' + config.file.name + 'uploaded. Response: ' + data);
+                  // console.log('file ' + config.file.name + 'uploaded. Response: ' + data);
+
+                  $scope.directory.files.push(data);
+
+
               });
           }
       }

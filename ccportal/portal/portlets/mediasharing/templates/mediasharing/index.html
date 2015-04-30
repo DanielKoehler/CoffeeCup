@@ -29,10 +29,7 @@
 
       <script type="text/ng-template" id="uploadForm">
         <h1>Upload File</h1>
-        <form>
-          <input type="file">
-          <input type="submit">
-        </form>
+        <p>Drag and drop file to upload</p>
       </script>  
 
       <script type="text/ng-template" id="newDirectoryForm">
@@ -48,8 +45,8 @@
         <ul>
           <li ng-click="addFile()"><span class="ion-ios-cloud-upload-outline"></span><span class="description">upload</span></li>
           <li ng-click="addDirectory()"><span class="ion-ios-folder-outline"></span><span class="description">new directory</span></li>
-          <li><span class="ion-ios-upload-outline"></span><span class="description">share</span></li>
-          <li><span class="ion-ios-loop"></span><span class="description">convert</span></li>
+          <!-- <li><span class="ion-ios-upload-outline"></span><span class="description">share</span></li> -->
+          <!-- <li><span class="ion-ios-loop"></span><span class="description">convert</span></li> -->
           <li ng-click="deleteSelected()"><span class="ion-ios-trash-outline"></span><span class="description">delete</span></li>
         </ul>
       

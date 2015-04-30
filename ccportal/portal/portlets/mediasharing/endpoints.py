@@ -124,6 +124,17 @@ def post_object(request):
         return JsonResponse(f.get_client_inode(), safe=False)
     return JsonResponse({'message':'Invalid file..'}, status=400, safe=False)
 
+@permission_required('mediasharing.can_create')
+def get_object_conversions(request, objectId):
+
+    objectId = re.sub("[^0-9]", "", objectId)
+
+    object_name = File.objects.get(id=objectId)
+
+    info = c.probe('test1.ogg')
+
+    return JsonResponse({'message':'Invalid file..'}, status=400, safe=False)
+
 @permission_required('mediasharing.can_delete')
 def delete_object(request):
 
