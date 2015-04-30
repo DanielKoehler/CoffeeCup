@@ -22,13 +22,10 @@
     <button type="submit" class"applet-button large applet-button-blue">Sign In</button>
   </form>
 
-
-
   <div class="login-footer">
-    <img class="login-icon" src="{% static 'images/fb_icon.svg' %}">
-    <p>Log in using your <span class="text-bold">Facebook</span> account.</p>
+    <a href="{% url 'social:begin' 'facebook' %}?next={{ request.path }}"><img class="login-icon" src="{% static 'images/fb_icon.svg' %}">
+    <p>Log in using your <span class="text-bold">Facebook</span> account.</p></a>
   </div>
-
 
 </div>
 

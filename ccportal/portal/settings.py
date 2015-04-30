@@ -34,13 +34,14 @@ ALLOWED_HOSTS = ['localhost', '178.62.46.211']
 INSTALLED_APPS = (
     
     'menu',
-    'django_sockjs_tornado',
+    #'django_sockjs_tornado',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'social.apps.django_app.default',
 
     
     # Coffee Cup Apps
@@ -51,9 +52,11 @@ INSTALLED_APPS = (
     'portal.portlets.investorbulletin',
     'portal.portlets.locationmanager',
     'portal.portlets.mediasharing',
-    'portal.portlets.messenger',
+    #'portal.portlets.messenger',
     'portal.portlets.scheduling',
     'portal.portlets.useradministration',
+    'social.apps.django_app.context_processors.backends',
+    'social.apps.django_app.context_processors.login_redirect',
                   
 )
 
@@ -82,6 +85,26 @@ MIDDLEWARE_CLASSES = (
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 )
+
+AUTHENTICATION_BACKENDS = (
+   'social.backends.facebook.FacebookOAuth2',
+   'social.backends.google.GoogleOAuth2',
+   'social.backends.twitter.TwitterOAuth',
+   'django.contrib.auth.backends.ModelBackend',
+)
+
+SOCIAL_AUTH_USER_MODEL = 'site.User'
+
+# SOCIAL_AUTH_FACEBOOK_KEY = '618381151630752' # REAL APP
+# SOCIAL_AUTH_FACEBOOK_SECRET ='24c0544787dd08bf68468da58b35d00d' # REAL APP
+
+SOCIAL_AUTH_FACEBOOK_KEY = '620204744781726' # TEST APP
+SOCIAL_AUTH_FACEBOOK_SECRET ='eece66a9895a89fe781c9d68fceb58b0' # TEST APP
+
+# FACEBOOK_EXTENDED_PERMISSIONS = ['email']
+# SOCIAL_AUTH_USERNAME_IS_FULL_EMAIL = True
+
+LOGIN_REDIRECT_URL = '/'
 
 ROOT_URLCONF = 'portal.urls'
 

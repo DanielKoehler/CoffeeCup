@@ -14,6 +14,8 @@ urlpatterns = patterns('',
 
     url(r'^login/$', 'portal.site.views.user_login'),
 	url(r'^logout/$', 'portal.site.views.user_logout'),
+    url('', include('social.apps.django_app.urls', namespace='social')),
+    url('', include('django.contrib.auth.urls', namespace='auth')),
 
 	# Portlets
     url(r'^$', 'portal.portlets.dashboard.views.index', name='index'),
