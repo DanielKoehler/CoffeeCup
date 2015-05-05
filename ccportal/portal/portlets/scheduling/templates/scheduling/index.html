@@ -13,14 +13,16 @@
 	  	<div class="applet-col-header header-thin text-centre">
 	  	
 	  		<i class="ion-ios-arrow-back"></i>
-	  		<span class="scheduler-monthday">Mar 10</span> <span class="scheduler-year">2015</span>
-	  		<i class="ion-ios-arrow-forward"></i>
+	  		{% verbatim %}
+	  			<span class="scheduler-monthday">{{dateObj.selectedDate | date:'MMM dd'}}</span> <span class="scheduler-year">{{dateObj.selectedDate | date:'yyyy'}}</span>
+	  		{% endverbatim %}
+	  		<i class="ion-ios-arrow-forward" ng-click="log()"></i>
 
 	  	</div>
 
 		<div class="applet-cell scheduler-calendar day-view">
 
-			<div ui-calendar ng-model="eventSources"></div>
+			<div ui-calendar ng-model="eventSources" calendar="schedule"></div>
 
 	<!-- 		<div class="day-timeline"> Styled Markup - Full Calendar allows custom markup.
 				<div class="hours">
@@ -162,14 +164,14 @@
 {% block scripts %}
 
 <script type="text/javascript" src="{% static 'js/bower_components/jquery/dist/jquery.js' %}"></script>
-<script type="text/javascript" src="{% static 'js/bower_components/jquery-ui/ui/jquery-ui.js' %}"></script>
+<script type="text/javascript" src="{% static 'js/bower_components/moment/moment.js' %}"></script>
 <script type="text/javascript" src="{% static 'js/bower_components/angular/angular.js' %}"></script>
-<script type="text/javascript" src="{% static 'js/bower_components/ui-bootstrap/ui-bootstrap-tpls-0.12.1.min.js' %}"></script>
 <script type="text/javascript" src="{% static 'js/bower_components/angular-ui-calendar/src/calendar.js' %}"></script>
+<script type="text/javascript" src="{% static 'js/bower_components/angular-bootstrap/ui-bootstrap.js' %}"></script>
 <script type="text/javascript" src="{% static 'js/bower_components/fullcalendar/fullcalendar.js' %}"></script>
 <script type="text/javascript" src="{% static 'js/bower_components/fullcalendar/gcal.js' %}"></script>
 
-<script type="text/javascript" src="{% static 'js/angular-cookies.js' %}"></script>	
+<script type="text/javascript" src="{% static 'js/angular-cookies.js' %}"></script>
 
 <script type="text/javascript">
 	
@@ -183,7 +185,7 @@ calendar.run( function run( $http, $cookies ){
 })
 
 
-function CalendarCtrl($scope,$compile,uiCalendarConfig, $http) {
+function CalendarCtrl($scope, $compile, uiCalendarConfig, $http) {
 
     var date = new Date();
     var d = date.getDate();
@@ -194,7 +196,7 @@ function CalendarCtrl($scope,$compile,uiCalendarConfig, $http) {
 
     $scope.events = [];
 
-    $scope.eventSources = $scope.events;
+    $scope.dateObj = {selectedDate: new Date()}
 
 	$http.post('events/get/', {}).success(function(items, status, headers, config) {
         // this callback will be called asynchronously
@@ -218,6 +220,21 @@ function CalendarCtrl($scope,$compile,uiCalendarConfig, $http) {
         });
 
     });
+
+  	$scope.eventsF = function (start, end, timezone, callback) {
+     	
+  		value = uiCalendarConfig.calendars.schedule.fullCalendar('getDate').valueOf()
+
+  		$scope.dateObj.selectedDate = new Date(value)
+  		$scope.$digest();
+
+  		// debugger;
+
+      	// console.log($scope.dateBound);
+      	
+      	// callback(events);
+
+    };
 
     $scope.calEventsExt = {
        color: '#f00',
@@ -268,10 +285,13 @@ function CalendarCtrl($scope,$compile,uiCalendarConfig, $http) {
     };
     /* Change View */
     $scope.changeView = function(view,calendar) {
+
       uiCalendarConfig.calendars[calendar].fullCalendar('changeView',view);
     };
     /* Change View */
     $scope.renderCalender = function(calendar) {
+
+
       if(uiCalendarConfig.calendars[calendar]){
         uiCalendarConfig.calendars[calendar].fullCalendar('render');
       }
@@ -311,8 +331,16 @@ function CalendarCtrl($scope,$compile,uiCalendarConfig, $http) {
       }
     };
     /* event sources array*/
-    $scope.eventSources = [$scope.events, $scope.eventSource, $scope.eventsF];
-    $scope.eventSources2 = [$scope.calEventsExt, $scope.eventsF, $scope.events];
+    $scope.eventSources = [$scope.events, $scope.eventsF];
+
+    
+
+    // $scope.log = function() {/
+
+    
+    // }
+
+    // $scope.eventSources2 = [$scope.calEventsExt, $scope.eventsF, $scope.events];
 }
 
 </script>

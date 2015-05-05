@@ -55,8 +55,8 @@ INSTALLED_APPS = (
     'portal.portlets.messenger',
     'portal.portlets.scheduling',
     'portal.portlets.useradministration',
-    'social.apps.django_app.context_processors.backends',
-    'social.apps.django_app.context_processors.login_redirect',
+    # 'social.apps.django_app.context_processors.backends',
+    # 'social.apps.django_app.context_processors.login_redirect',
                   
 )
 
@@ -93,7 +93,7 @@ AUTHENTICATION_BACKENDS = (
    'django.contrib.auth.backends.ModelBackend',
 )
 
-SOCIAL_AUTH_USER_MODEL = 'site.User'
+# SOCIAL_AUTH_USER_MODEL = 'site.User'
 
 # SOCIAL_AUTH_FACEBOOK_KEY = '618381151630752' # REAL APP
 # SOCIAL_AUTH_FACEBOOK_SECRET ='24c0544787dd08bf68468da58b35d00d' # REAL APP
