@@ -6,7 +6,7 @@ var messenger = angular.module('messenger', [
 
 messenger.factory('messengerSocket', function (socketFactory) {
   return socketFactory({
-    url: 'http://localhost:9999/messenger'
+    url: ':9999/messenger'
   });
 })
 
